@@ -265,7 +265,6 @@
 <body class="antialiased">
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Section 1: Hero -->
     <section class="h-screen w-full flex flex-col justify-center items-center text-center p-4 relative overflow-hidden">
         <div class="absolute inset-0 bg-grid-gray-700/[0.2] [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)]"></div>
         <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
@@ -281,7 +280,6 @@
         </div>
     </section>
 
-    <!-- Section 1.5: Personal Positioning -->
     <section class="min-h-screen w-full flex flex-col justify-center items-center py-20 px-4 md:px-10">
         <div class="max-w-6xl mx-auto w-full">
             <div class="reveal text-center">
@@ -305,18 +303,15 @@
         </div>
     </section>
 
-    <!-- Section 1.75: Growth Path Timeline -->
     <section class="py-20 px-4 md:px-10">
         <div class="max-w-4xl mx-auto">
             <div class="reveal text-center mb-16">
                  <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">成长路径</h2>
             </div>
             <div id="timeline-container" class="relative">
-                <!-- Vertical line -->
                 <div class="timeline-line"></div>
                 <div class="timeline-progress"></div>
                 
-                <!-- Timeline Item 1 -->
                 <div class="relative pl-12 md:pl-0 mb-12 reveal">
                     <div class="md:flex items-center md:justify-end">
                         <div class="md:w-1/2 md:pr-8 md:text-right">
@@ -331,7 +326,6 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 2 -->
                 <div class="relative pl-12 md:pl-0 mb-12 reveal">
                     <div class="md:flex items-center">
                         <div class="md:w-1/2 md:pr-8"></div>
@@ -346,7 +340,6 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 3 -->
                 <div class="relative pl-12 md:pl-0 mb-12 reveal">
                     <div class="md:flex items-center md:justify-end">
                         <div class="md:w-1/2 md:pr-8 md:text-right">
@@ -361,7 +354,6 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 4 -->
                 <div class="relative pl-12 md:pl-0 reveal">
                     <div class="md:flex items-center">
                          <div class="md:w-1/2 md:pr-8"></div>
@@ -379,7 +371,6 @@
         </div>
     </section>
 
-    <!-- Section 2: AI Automation -->
     <section id="automation-section" class="min-h-screen py-20 px-4 md:px-10 flex flex-col justify-center">
         <div class="max-w-6xl mx-auto w-full">
             <div class="reveal">
@@ -425,15 +416,13 @@
                     <div>
                         <h4 class="text-xl font-bold text-white mb-4">一级标签：用户需求 (12)</h4>
                         <div id="demand-cards" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            <!-- JS will populate this -->
-                        </div>
+                            </div>
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-4">二级与三级标签：领域与子领域 (19 / 80)</h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[400px] md:h-[500px] glassmorphism p-4 rounded-lg">
                             <div id="domain-list" class="overflow-y-auto pr-2 md:col-span-1">
-                                <!-- JS will populate this -->
-                            </div>
+                                </div>
                             <div id="subdomain-list" class="overflow-y-auto border-t md:border-t-0 md:border-l border-slate-700 pt-4 md:pt-0 pl-4 md:col-span-2">
                                  <div class="flex items-center justify-center h-full text-slate-500">
                                     <p>← 在左侧选择一个领域</p>
@@ -464,7 +453,6 @@
                     </div>
                  </div>
 
-                 <!-- New Content: Script Optimization -->
                  <div class="mt-16">
                     <h4 class="text-2xl font-bold text-white mb-6">a. 效果广告AI脚本优化</h4>
                     <div class="overflow-x-auto glassmorphism rounded-lg p-2">
@@ -531,7 +519,6 @@
         </div>
     </section>
 
-    <!-- Section 4: High-Quality Cases -->
     <section class="py-20">
         <div class="max-w-6xl mx-auto px-4 md:px-10 reveal">
             <h3 class="text-sm uppercase text-blue-400 font-bold">Level 2: 增长素材创意产出</h3>
@@ -540,83 +527,82 @@
         </div>
         <div class="mt-12 horizontal-scroll-container">
             <div class="horizontal-scroll py-4 pl-4 md:pl-10 lg:pl-20 xl:pl-32">
-                <!-- Case 1 -->
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative cursor-pointer" 
-                     style="background-image: url('1-地球.png'); background-size: cover; background-position: center;"
-                     data-video-src="视频/1-地理老师备课.mp4">
-                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                    <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                        <div>
-                            <p class="text-sm text-blue-400">AI动画</p>
-                            <h4 class="case-card-title text-2xl font-bold mt-2 text-white">地理老师备课</h4>
-                            <p class="text-slate-200 mt-2">将地球模型制作与备课场景结合，直击教师痛点。</p>
+                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                     style="background-image: url('1-地球.png'); background-size: cover; background-position: center;">
+                    <a href="https://tos.mobgi.com/tos_beijing/material_2/20250527/12400082056/12400082056/09072ae82e5152b8c9073ba0de3ec2c8.mp4" target="_blank" class="block w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                            <div>
+                                <p class="text-sm text-blue-400">AI动画</p>
+                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">地理老师备课</h4>
+                                <p class="text-slate-200 mt-2">将地球模型制作与备课场景结合，直击教师痛点。</p>
+                            </div>
+                            <div class="mt-6 border-t border-slate-700 pt-4">
+                                <p class="text-3xl font-bold gradient-text">25w+</p>
+                                <p class="text-slate-300">素材总消耗</p>
+                                <p class="text-sm text-slate-400">连续四周投放Top3</p>
+                            </div>
                         </div>
-                        <div class="mt-6 border-t border-slate-700 pt-4">
-                            <p class="text-3xl font-bold gradient-text">25w+</p>
-                            <p class="text-slate-300">素材总消耗</p>
-                            <p class="text-sm text-slate-400">连续四周投放Top3</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                <!-- Case 2 -->
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative cursor-pointer" 
-                     style="background-image: url('2-侠客.png'); background-size: cover; background-position: center; transition-delay: 150ms;"
-                     data-video-src="视频/2-肉鸽游戏.mp4">
-                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                    <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                        <div>
-                            <p class="text-sm text-blue-400">AI动画</p>
-                            <h4 class="case-card-title text-2xl font-bold mt-2 text-white">肉鸽游戏“K侠”</h4>
-                            <p class="text-slate-200 mt-2">结合热点游戏元素，升级游戏素材表现力。</p>
+                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                     style="background-image: url('2-侠客.png'); background-size: cover; background-position: center; transition-delay: 150ms;">
+                    <a href="https://tos.mobgi.com/tos_beijing/material_2/20250523/12400082056/12400082056/daf00cc9a65dac1f14557f625b6069ee.mp4" target="_blank" class="block w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                            <div>
+                                <p class="text-sm text-blue-400">AI动画</p>
+                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">肉鸽游戏“K侠”</h4>
+                                <p class="text-slate-200 mt-2">结合热点游戏元素，升级游戏素材表现力。</p>
+                            </div>
+                            <div class="mt-6 border-t border-slate-700 pt-4">
+                                <p class="text-3xl font-bold gradient-text">12w+</p>
+                                <p class="text-slate-300">素材总消耗</p>
+                                <p class="text-sm text-slate-400">创新游戏素材包装</p>
+                            </div>
                         </div>
-                        <div class="mt-6 border-t border-slate-700 pt-4">
-                            <p class="text-3xl font-bold gradient-text">12w+</p>
-                            <p class="text-slate-300">素材总消耗</p>
-                            <p class="text-sm text-slate-400">创新游戏素材包装</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                <!-- Case 3 -->
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative cursor-pointer" 
-                     style="background-image: url('3-代码.png'); background-size: cover; background-position: center; transition-delay: 300ms;"
-                     data-video-src="视频/3-编程知识科普.mp4">
-                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                    <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                        <div>
-                            <p class="text-sm text-blue-400">包装剪辑/信息流</p>
-                            <h4 class="case-card-title text-2xl font-bold mt-2 text-white">编程知识科普</h4>
-                            <p class="text-slate-200 mt-2">兼具专业性与视觉表现力，提升专业用户转化。</p>
+                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                     style="background-image: url('3-代码.png'); background-size: cover; background-position: center; transition-delay: 300ms;">
+                    <a href="https://tos.mobgi.com/tos_beijing/material_2/20250723/12400082056/12400096371/aa4f59f6c0348eb8dd8f2c4312f3b160.mp4" target="_blank" class="block w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                            <div>
+                                <p class="text-sm text-blue-400">包装剪辑/信息流</p>
+                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">编程知识科普</h4>
+                                <p class="text-slate-200 mt-2">兼具专业性与视觉表现力，提升专业用户转化。</p>
+                            </div>
+                            <div class="mt-6 border-t border-slate-700 pt-4">
+                                <p class="text-3xl font-bold gradient-text">23%</p>
+                                <p class="text-slate-300">平均次日留存率</p>
+                                <p class="text-sm text-slate-400">代码素材升级后</p>
+                            </div>
                         </div>
-                        <div class="mt-6 border-t border-slate-700 pt-4">
-                            <p class="text-3xl font-bold gradient-text">23%</p>
-                            <p class="text-slate-300">平均次日留存率</p>
-                            <p class="text-sm text-slate-400">代码素材升级后</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                 <!-- Case 4 -->
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative cursor-pointer" 
-                     style="background-image: url('4-小红书.png'); background-size: cover; background-position: center; transition-delay: 450ms;"
-                     data-video-src="视频/k2质量包剪.mp4">
-                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                    <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                        <div>
-                            <p class="text-sm text-blue-400">社媒运营</p>
-                            <h4 class="case-card-title text-2xl font-bold mt-2 text-white">小红书内容制作</h4>
-                            <p class="text-slate-200 mt-2">负责图文内容制作与发布，探索原生内容流量。</p>
+                 <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                     style="background-image: url('4-小红书.png'); background-size: cover; background-position: center; transition-delay: 450ms;">
+                    <a href="视频/k2质量包剪.mp4" target="_blank" class="block w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                            <div>
+                                <p class="text-sm text-blue-400">社媒运营</p>
+                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">小红书内容制作</h4>
+                                <p class="text-slate-200 mt-2">负责图文内容制作与发布，探索原生内容流量。</p>
+                            </div>
+                            <div class="mt-6 border-t border-slate-700 pt-4">
+                                <p class="text-3xl font-bold gradient-text">2100+</p>
+                                <p class="text-slate-300">总获赞与收藏</p>
+                                <p class="text-sm text-slate-400">从0到1的账号尝试</p>
+                            </div>
                         </div>
-                        <div class="mt-6 border-t border-slate-700 pt-4">
-                            <p class="text-3xl font-bold gradient-text">2100+</p>
-                            <p class="text-slate-300">总获赞与收藏</p>
-                            <p class="text-sm text-slate-400">从0到1的账号尝试</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Section 5: Future Outlook -->
     <section class="min-h-screen py-20 px-4 md:px-10 flex items-center">
         <div class="max-w-6xl mx-auto w-full">
             <div class="reveal">
@@ -650,7 +636,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="text-center py-10 px-4">
         <p class="text-slate-400">感谢您的观看</p>
     </footer>
@@ -864,19 +849,7 @@
                 });
             }
 
-            // 视频跳转逻辑
-            const scrollContainer = document.querySelector('.horizontal-scroll');
-            if (scrollContainer) {
-                scrollContainer.addEventListener('click', (event) => {
-                    const clickedCard = event.target.closest('.case-card');
-                    if (clickedCard) {
-                        const videoSrc = clickedCard.getAttribute('data-video-src');
-                        if (videoSrc) {
-                            window.open(videoSrc, '_blank');
-                        }
-                    }
-                });
-            }
+            // 视频跳转逻辑 - 已通过 <a> 标签实现，无需 JavaScript
         });
     </script>
 </body>
