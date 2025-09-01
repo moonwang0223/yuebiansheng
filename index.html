@@ -4,263 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>王中胜 - Kimi增长创意实习Review</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* 自定义样式 */
-        body {
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            background-color: #0a0a0a;
-            color: #e2e8f0;
-            scroll-behavior: smooth;
-        }
-
-        /* 滚动条样式 */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a202c;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4a5568;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #718096;
-        }
-
-        /* 动画效果 */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 标题下划线动画 */
-        .title-underline::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 4px;
-            background: #4299e1;
-            transition: width 0.5s ease-in-out;
-            margin-top: 8px;
-        }
-        .visible .title-underline::after {
-            width: 80px;
-        }
-        
-        .subtitle-underline::after {
-             content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #4a5568;
-            transition: width 0.5s ease-in-out .3s;
-            margin-top: 8px;
-        }
-        .visible .subtitle-underline::after {
-            width: 100%;
-        }
-
-        /* 水平滚动容器 */
-        .horizontal-scroll-container {
-            position: relative;
-        }
-        .horizontal-scroll-container::after {
-            content: '→';
-            font-size: 2rem;
-            color: rgba(255,255,255,0.2);
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: bounce-horizontal 1.5s infinite;
-            pointer-events: none;
-        }
-
-        @keyframes bounce-horizontal {
-            0%, 100% { transform: translate(-50%, -50%); }
-            50% { transform: translate(0, -50%); }
-        }
-
-        .horizontal-scroll {
-            display: flex;
-            overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none;  /* IE 10+ */
-        }
-        .horizontal-scroll::-webkit-scrollbar {
-            display: none; /* Safari and Chrome */
-        }
-
-        /* 玻璃拟态效果 */
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .glassmorphism:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        /* 渐变文字 */
-        .gradient-text {
-            background: linear-gradient(90deg, #4299e1, #63b3ed, #90cdf4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .counter-value {
-            transition: all 1.5s ease-out;
-        }
-        
-        /* 数据卡片悬停效果 */
-        .data-card {
-            position: relative;
-        }
-        .data-card .impact-text {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-size: 0.8rem;
-            position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            right: 1rem;
-        }
-        .data-card:hover .impact-text {
-            opacity: 1;
-        }
-        .data-card:hover .main-text {
-            transform: translateY(-10px);
-            transition: transform 0.3s ease;
-        }
-        .data-card .main-text {
-            transition: transform 0.3s ease;
-        }
-
-        /* 标签体系可视化样式 */
-        .demand-card {
-            position: relative;
-            overflow: hidden;
-        }
-        .demand-card .description {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.8);
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            font-size: 0.875rem;
-        }
-        .demand-card:hover .description {
-            transform: translateY(0);
-        }
-        .domain-item {
-            cursor: pointer;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.375rem;
-            transition: background-color 0.2s ease;
-        }
-        .domain-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .domain-item.active {
-            background-color: #4299e1;
-            color: white;
-            font-weight: bold;
-        }
-        .subdomain-list-inner {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-        .subdomain-list-inner span {
-            background-color: #2d3748;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-        
-        /* 时间轴 */
-        #timeline-container .timeline-line {
-            position: absolute;
-            left: 1rem; /* Mobile */
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background-color: #4a5568;
-        }
-        #timeline-container .timeline-progress {
-            position: absolute;
-            left: 1rem; /* Mobile */
-            top: 0;
-            height: 0;
-            width: 2px;
-            background: #4299e1;
-            transition: height 0.1s linear;
-        }
-        #timeline-container .timeline-progress::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #4299e1;
-            border: 4px solid #0a0a0a;
-            box-shadow: 0 0 15px #4299e1;
-        }
-        .timeline-dot {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .reveal.visible .timeline-dot {
-            transform: scale(1.25) translateX(-50%);
-            box-shadow: 0 0 20px #4299e1;
-        }
-        
-        @media (min-width: 768px) {
-            #timeline-container .timeline-line,
-            #timeline-container .timeline-progress {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .reveal.visible .timeline-dot {
-                 transform: scale(1.25) translateX(-50%);
-            }
-        }
-        
-        /* 背景动效 */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
     <canvas id="particle-canvas"></canvas>
@@ -311,7 +62,6 @@
             <div id="timeline-container" class="relative">
                 <div class="timeline-line"></div>
                 <div class="timeline-progress"></div>
-                
                 <div class="relative pl-12 md:pl-0 mb-12 reveal">
                     <div class="md:flex items-center md:justify-end">
                         <div class="md:w-1/2 md:pr-8 md:text-right">
@@ -325,7 +75,6 @@
                         <div class="md:w-1/2 md:pl-8"></div>
                     </div>
                 </div>
-
                 <div class="relative pl-12 md:pl-0 mb-12 reveal">
                     <div class="md:flex items-center">
                         <div class="md:w-1/2 md:pr-8"></div>
@@ -339,7 +88,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="relative pl-12 md:pl-0 mb-12 reveal">
                     <div class="md:flex items-center md:justify-end">
                         <div class="md:w-1/2 md:pr-8 md:text-right">
@@ -353,7 +101,6 @@
                         <div class="md:w-1/2 md:pl-8"></div>
                     </div>
                 </div>
-
                 <div class="relative pl-12 md:pl-0 reveal">
                     <div class="md:flex items-center">
                          <div class="md:w-1/2 md:pr-8"></div>
@@ -435,100 +182,123 @@
 
             <div class="mt-20 reveal">
                  <h3 class="text-3xl font-bold subtitle-underline mb-6">脚本自动化 2.0</h3>
-                 <p class="text-lg text-slate-400 max-w-3xl mb-8">优化Prompt工程，打通数据闭环，让AI生成的脚本“去AI感”，更原生、更专业，有效提升内容质量。</p>
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="glassmorphism rounded-2xl p-8">
-                        <div class="flex items-baseline justify-center space-x-2">
-                            <p class="text-6xl font-bold gradient-text counter-value" data-target="6.95" data-decimal="true">0.00</p>
-                            <p class="text-2xl text-slate-400">/10</p>
-                        </div>
-                        <p class="text-center mt-2 text-slate-300">达人脚本内部评分</p>
-                    </div>
-                    <div class="glassmorphism rounded-2xl p-8">
-                        <div class="flex items-baseline justify-center space-x-2">
-                            <p class="text-6xl font-bold gradient-text counter-value" data-target="7.1" data-decimal="true">0.0</p>
-                             <p class="text-2xl text-slate-400">/10</p>
-                        </div>
-                        <p class="text-center mt-2 text-slate-300">海外脚本评分</p>
-                    </div>
-                 </div>
-
+                 
                  <div class="mt-16">
                     <h4 class="text-2xl font-bold text-white mb-6">a. 效果广告AI脚本优化</h4>
-                    <div class="overflow-x-auto glassmorphism rounded-lg p-2">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr>
-                                    <th class="p-4 border-b border-slate-700 w-1/4">调优方向</th>
-                                    <th class="p-4 border-b border-slate-700 w-1/4">Prompt 1.0</th>
-                                    <th class="p-4 border-b border-slate-700 w-1/4">Prompt 2.0</th>
-                                    <th class="p-4 border-b border-slate-700 w-1/4">Prompt 3.0</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-slate-800 align-top">
-                                    <td class="p-4 font-semibold text-blue-300">开场钩子</td>
-                                    <td class="p-4 text-sm text-slate-300">【强烈数字对比+夸张背书】<br>故宫讲解员要价2000一天,AI直接帮你解读9999件文物!</td>
-                                    <td class="p-4 text-sm text-slate-300">【焦虑痛点】<br>是不是也想在公开课上引经据典、惊艳四座,可一到备课,就只剩对着网上千篇一律的模板熬到深夜?</td>
-                                    <td class="p-4 text-sm text-slate-300">【真实故事+第三方视角】<br>我有个朋友是重点中学的高一班主任,前几天深夜给我发了张照片,说又在为了一节公开课熬夜......</td>
-                                </tr>
-                                <tr class="border-b border-slate-800 align-top">
-                                    <td class="p-4 font-semibold text-blue-300">核心逻辑</td>
-                                    <td class="p-4 text-sm text-slate-300">【结果一步到位】<br>拍照发给Kimi,它能告诉你这是康熙年间的珍品...</td>
-                                    <td class="p-4 text-sm text-slate-300">【踩一捧一+忽略生成过程】<br>说真的,别再用那些只会说“正确的空话”、甚至比你还刻板的AI模板了。</td>
-                                    <td class="p-4 text-sm text-slate-300">【细化过程+关注结果质量】<br>Kimi会先列出大纲...不到一分钟,一份逻辑清晰、数据详实的总结初稿就摆在眼前了。</td>
-                                </tr>
-                                <tr class="align-top">
-                                    <td class="p-4 font-semibold text-blue-300">行动号召</td>
-                                    <td class="p-4 text-sm text-slate-300">【直接紧急】<br>你拍照就能变文物专家,这么强的博物馆神器,点击下方立即体验!</td>
-                                    <td class="p-4 text-sm text-slate-300">【利益驱动】<br>给自己请个免费的教研专家,让你备的每一节课都出彩。</td>
-                                    <td class="p-4 text-sm text-slate-300">【表达观点+价值重塑】<br>让它开始把老师从那些最耗费心神的案头工作中释放出来...</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                 </div>
-
-                 <div class="mt-16">
-                    <h4 class="text-2xl font-bold text-white mb-6">b. 达人脚本优化</h4>
-                    <p class="text-slate-400 mb-6 max-w-3xl">效果广告原生感不足，信任成本高。为丰富脚本风格，达人prompt不依赖固定模版，更关注达人风格范本的叙事框架、说服技巧等，生成动态创作原则并输出。</p>
-                    <div class="glassmorphism rounded-lg p-8">
-                        <p class="text-sm text-slate-400 mb-4">案例: 风格范本(小红书职场博主) + 核心Query(合同到期公司不给续应该怎么赔偿?)</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="border-l-2 border-blue-400 pl-4">
-                                <h5 class="font-bold text-white">故事回忆-反思与说理</h5>
-                                <p class="text-sm text-slate-300 mt-2">刚入行时...我瘫在椅子上问自己:我读了那么多书,做了那么多案例,我为什么要靠“策略体力活”来赚钱?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glassmorphism rounded-lg p-6">
+                            <h5 class="text-lg font-bold text-white mb-4">优化前</h5>
+                            <div class="text-sm text-slate-300 space-y-3">
+                                <p><strong class="text-blue-300">【钩子-痛点与爽点】</strong><br>一节心理课，你要熬夜找资料10小时，学生听完课转头就忘。现在，1分钟，一个指令，你就能变身学生眼里的“心理大神”！</p>
+                                <p><strong class="text-blue-300">【权威背书】</strong><br>我最近发现了一个国产ai，由清华团队研发的Kimi智能助手。</p>
+                                <p><strong class="text-blue-300">【强调结果+一步到位+简化交互过程】</strong><br>你给它说“给我一份给高一学生讲‘求助’的心理课教案“。瞬间，一份专家级的教案设计就出现在你眼前。</p>
+                                <p><strong class="text-blue-300">【踩一捧一+夸张数据】</strong><br>你看这节课的每一个部分都安排的明明白白。你的这堂课，效果直接碾压学校里80%的心理讲座。</p>
+                                <p><strong class="text-blue-300">【经典ai定义】</strong><br>拥有Kimi，意味着你既拥有了一个顶尖的教学智囊团，又拥有了一个贴心的技术问题解决专家。</p>
+                                <p><strong class="text-blue-300">【卖点直接+利益驱动】</strong><br>最强的是完全免费不限次数，这么强的神器，点击下方链接立即体验！</p>
                             </div>
-                            <div class="border-l-2 border-blue-400 pl-4">
-                                <h5 class="font-bold text-white">价值观过渡</h5>
-                                <p class="text-sm text-slate-300 mt-2">那一刻我才意识到,我真正的价值,是我的思考,而不是我的“擅长熬夜”。</p>
-                            </div>
-                            <div class="border-l-2 border-blue-400 pl-4">
-                                <h5 class="font-bold text-white">结构化输出+方法论</h5>
-                                <p class="text-sm text-slate-300 mt-2">比如,分析“2025年女性护肤品爆点”这种事...我直接把问题扔给Kimi,它给我一份洞察报告...我工作的重心,彻底从“寻找答案”,转移到了“提出一个好问题”上。</p>
-                            </div>
-                            <div class="border-l-2 border-blue-400 pl-4">
-                                <h5 class="font-bold text-white">传递价值+用户收获</h5>
-                                <p class="text-sm text-slate-300 mt-2">所以,希望所有同行都能认识到...你的才华,是用来创造和判断的,不是用来消耗在复制粘贴里的。</p>
+                        </div>
+                        <div class="glassmorphism rounded-lg p-6">
+                            <h5 class="text-lg font-bold text-white mb-4">优化后</h5>
+                            <div class="text-sm text-slate-300 space-y-3">
+                                <p><strong class="text-blue-300">【真实故事+第三方视角】</strong><br>我有个朋友是重点中学的高一班主任，前几天深夜给我发了张照片，说又在为了一节公开课熬夜。她想给孩子们设计一堂关于“如何求助”的心理课，目标很宏大，想让孩子们相信“当你发出信号，世界真的会回应”，但她总觉得自己的设计太说教，太平淡。</p>
+                                <p><strong class="text-blue-300">【展示生产过程和结果】</strong><br>我让她把这个头疼的想法，原封不动地扔给Kimi。 Kimi给出的结果，让她有点惊喜。这份教案层层递进，从一个叫“孤岛来信”的匿名游戏开始破冰，到引用心理学案例引导讨论，再到最后让学生写下求助信号并交换回应。 Kimi也满足了她追问的需求，设计更更戏剧化一点，更能保护学生的隐私。</p>
+                                <p><strong class="text-blue-300">【拓宽使用场景】</strong><br>从那天起，她不仅用Kimi打磨课件，甚至让她帮忙把几篇前沿的教育专题，总结成给家长看的家庭教育建议。</p>
+                                <p><strong class="text-blue-300">【表达观点+传递价值】</strong><br>我最大的感受是，AI真正的价值，不是让老师变得“会偷懒”，而是成为了一个永不枯竭的“灵感源泉”。它开始把老师从那些最耗费心神的案头工作中释放出来，去真正地、用心地、面对面地，回应每一个孩子发出的信号。</p>
                             </div>
                         </div>
                     </div>
                  </div>
 
+                 <div class="mt-16">
+                    <h4 class="text-2xl font-bold text-white mb-6">脚本去营销化</h4>
+                    
+                    <div class="mb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="reveal glassmorphism rounded-2xl p-8">
+                                <h3 class="text-xl font-bold text-white mb-4">痛点</h3>
+                                <p class="text-slate-400">专业演员营销感重，内容原生感不足；素人博主缺乏文案功底，合作周期长达1-2个月。</p>
+                            </div>
+                            <div class="reveal glassmorphism rounded-2xl p-8" style="transition-delay: 200ms;">
+                                <h3 class="text-xl font-bold text-white mb-4">解决方案</h3>
+                                <p class="text-slate-400">筛选合适的素人博主，并为其提供由AI生成的定制化脚本，将合作周期压缩到1-2周。</p>
+                            </div>
+                            <div class="reveal glassmorphism rounded-2xl p-8" style="transition-delay: 400ms;">
+                                <h3 class="text-xl font-bold text-white mb-4">核心方法</h3>
+                                <p class="text-slate-400">不依赖固定模版，关注达人风格化的叙事框架、语言风格等，生成动态创作原则并输出脚本。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <div class="flip-card-container">
+                            <div class="flip-card">
+                                <div class="flip-card-front glassmorphism rounded-lg p-6 flex flex-col justify-center items-center text-center">
+                                    <h3 class="text-xl font-bold text-white">专业博主+结构化教学</h3>
+                                    <p class="text-slate-400 mt-4">点击查看详情</p>
+                                </div>
+                                <div class="flip-card-back glassmorphism rounded-lg px-12 py-12 text-sm text-slate-300 space-y-3">
+                                    <button class="close-button">&times;</button>
+                                    <div class="card-content-wrapper">
+                                        <p>当代码策的崩溃，我懂。所以我整合了一期详细的Kimi使用指南，就是为了让每个人，<strong class="text-blue-300">从“手动挡”一键切换到“自动挡”。</strong></p>
+                                        <p><strong class="text-blue-300">第一部分：Kimi当助理，解决80%的繁杂分析。</strong></p>
+                                        <p>第一，市场爆点分析。像这样直接输入公式：【2025年 女性护肤品 传播爆点】。过去要花几天搜集的资料，Kimi三分钟就能完成。厉害的是，它不只给出爆点，还会<strong class="text-blue-300">深入分析背后的社会心理和文化动因，等于直接给了一份洞察报告。</strong></p>
+                                        <p>第二，营销方案起草。用这个公式：【用‘黄金公式’拆解XX品牌 输出策划方案】。Kimi能快速生成一份逻辑全面的方案初稿。不止于此，它还是你的“策略风险扫描仪”。你把自己的方案喂给它，它能用同样的框架，以表格形式清晰指出方案的逻辑漏洞和优化建议。</p>
+                                        <p>解决了繁杂工作，我们再谈如何成为高阶玩家。</p>
+                                        <p><strong class="text-blue-300">第二部分：吸收Kimi的策略智慧，成为超强个体。</strong></p>
+                                        <p>首先，<strong class="text-blue-300">构建你的专属分析模型。</strong> 通过和Kimi的多轮对话追问，<strong class="text-blue-300">引导它一步步解构复杂的商业题，</strong> 最终生成一个包含市场机会、用户画像、产品定位等维度的、你专属的分析模型。</p>
+                                        <p>其次，快速学习一个新赛道。把几十份行业研报、财报一次性投给Kimi，让它【生成行业商业模式图谱并分析核心竞争要素】。<strong class="text-blue-300">几周的学习周期，现在一天就能搞定。</strong></p>
+                                        <p>掌握这些技巧，你就能在AI时代，<strong class="text-blue-300">从繁杂的细节中解放出来，变身“超强策略个体”。</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flip-card-container">
+                            <div class="flip-card">
+                                <div class="flip-card-front glassmorphism rounded-lg p-6 flex flex-col justify-center items-center text-center">
+                                    <h3 class="text-xl font-bold text-white">小红书博主+反思成长故事</h3>
+                                    <p class="text-slate-400 mt-4">点击查看详情</p>
+                                </div>
+                                <div class="flip-card-back glassmorphism rounded-lg px-12 py-12 text-sm text-slate-300 space-y-3">
+                                    <button class="close-button">&times;</button>
+                                    <div class="card-content-wrapper">
+                                        <p>刚入行时，我在一家大广告公司做策略助理。说白了，就是把几十页的报告，搬运到PPT里。开会可以不发言，但老板要的50页PPT，你今晚必须做完。</p>
+                                        <p>我当时并不是在靠策略能力赚钱，<strong class="text-blue-300">我是在靠我的耐心和视力。</strong></p>
+                                        <p>直到有一次为了比稿，我整合十几份报告到凌晨三点，满脑子都是复制粘贴，我突然就崩溃了。我瘫在椅子上问自己：<strong class="text-blue-300">我读了那么多书，做了那么多案例，我为什么要靠“策略体力活”来赚钱？</strong></p>
+                                        <p>那一刻我才意识到，<strong class="text-blue-300">我真正的价值，是我的思考，而不是我的“擅长熬夜”。</strong></p>
+                                        <p>后来，我发现了一种全新的工作方式。</p>
+                                        <p>比如，分析“2025年女性护肤品爆点”这种事，不再需要我花几天去搜集资料。我直接把问题扔给Kimi，它几分钟就能给我一份洞察报告，还分析了背后的社会心理。</p>
+                                        <p>再比如，用【黄金公式】做方案，我不再需要自己去填充里面的每一个格子。我让Kimi帮我拆解，我只负责在它的答案之上，进行更高维度的决策。</p>
+                                        <p><strong class="text-blue-300">我的工作重心，彻底从“寻找答案”，转移到了“提出一个好问题”上。</strong></p>
+                                        <p>所以，希望所有同行都能认识到，无休止地堆砌资料、通宵做PPT，这些都不是你的分内工作。<strong class="text-blue-300">你的优秀，不代表你应该被物化成一个信息处理器。</strong></p>
+                                        <p><strong class="text-blue-300">你的才华，是用来创造和判断的，不是用来消耗在复制粘贴里的。</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20">
+    <section class="py-20 mt-32">
         <div class="max-w-6xl mx-auto px-4 md:px-10 reveal">
             <h3 class="text-sm uppercase text-blue-400 font-bold">Level 2: 增长素材创意产出</h3>
             <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 title-underline">高质量案例开发</h2>
-            <p class="text-lg text-slate-400 max-w-3xl">贡献了<span class="gradient-text font-bold">70%</span>的代码方向素材，总消耗超<span class="gradient-text font-bold">100万</span>。以下是部分爆款案例：</p>
+            <p class="text-lg text-slate-400 max-w-3xl">
+                素材落地<span class="gradient-text font-bold text-2xl md:text-3xl">100+</span>，
+                贡献了<span class="gradient-text font-bold text-2xl md:text-3xl">70%</span>的代码方向素材，
+                总消耗超<span class="gradient-text font-bold text-2xl md:text-3xl">100万</span>。
+                以下是部分爆款案例：
+            </p>
         </div>
         <div class="mt-12 horizontal-scroll-container">
-            <div class="horizontal-scroll py-4 pl-4 md:pl-10 lg:pl-20 xl:pl-32">
+             <div class="horizontal-scroll py-4 pl-4 md:pl-10 lg:pl-20 xl:pl-32">
                 <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('1-地球.png'); background-size: cover; background-position: center;">
+                     style="background-image: url('https://i0.hdslb.com/bfs/openplatform/ac5b7de988ca11842e6ef979c18fb3df5d1d680a.png'); background-size: cover; background-position: center;">
                     <a href="https://tos.mobgi.com/tos_beijing/material_2/20250527/12400082056/12400082056/09072ae82e5152b8c9073ba0de3ec2c8.mp4" target="_blank" class="block w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
                         <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
@@ -546,7 +316,7 @@
                     </a>
                 </div>
                 <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('2-侠客.png'); background-size: cover; background-position: center; transition-delay: 150ms;">
+                     style="background-image: url('https://i0.hdslb.com/bfs/openplatform/9d77e255e9bfc11af94ca0846e897d6e26ba66df.png'); background-size: cover; background-position: center; transition-delay: 150ms;">
                     <a href="https://tos.mobgi.com/tos_beijing/material_2/20250523/12400082056/12400082056/daf00cc9a65dac1f14557f625b6069ee.mp4" target="_blank" class="block w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
                         <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
@@ -564,7 +334,7 @@
                     </a>
                 </div>
                 <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('3-代码.png'); background-size: cover; background-position: center; transition-delay: 300ms;">
+                     style="background-image: url('https://i0.hdslb.com/bfs/openplatform/6b615816e80b59cea9e4a4151b31e51cc35610eb.png'); background-size: cover; background-position: center; transition-delay: 300ms;">
                     <a href="https://tos.mobgi.com/tos_beijing/material_2/20250723/12400082056/12400096371/aa4f59f6c0348eb8dd8f2c4312f3b160.mp4" target="_blank" class="block w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
                         <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
@@ -581,9 +351,26 @@
                         </div>
                     </a>
                 </div>
-                 <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('4-小红书.png'); background-size: cover; background-position: center; transition-delay: 450ms;">
-                    <a href="http://go.plvideo.cn/front/video/view?vid=y3ca995a8867b59be208a7728c5c713e_y" target="_blank" class="block w-full h-full">
+                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                     style="background-image: url('https://i0.hdslb.com/bfs/openplatform/cd44dfa1074c627688ec29ffc7da180a6ddc6d42.png'); background-size: cover; background-position: center; transition-delay: 450ms;">
+                    <a href="https://tos.mobgi.com/tos_beijing/material_5/20250801/12400082056/12400096389/599b9128002193aa0c9c31695d1c7f2e.mp4?uid=12400107651" target="_blank" class="block w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                            <div>
+                                <p class="text-sm text-blue-400">k2素材上新</p>
+                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">质量包剪</h4>
+                                <p class="text-slate-200 mt-2">提升包装剪辑品质，去营销化</p>
+                            </div>
+                            <div class="mt-6 border-t border-slate-700 pt-4">
+                                <p class="text-3xl font-bold gradient-text">Top3</p>
+                                <p class="text-slate-300">首周投放数据反馈</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                     style="background-image: url('https://i0.hdslb.com/bfs/openplatform/2f81e7d6932b3df3d7821b0685c5b33fd35f69c2.png'); background-size: cover; background-position: center; transition-delay: 600ms;">
+                    <a href="https://www.xiaohongshu.com/user/profile/647fe749000000001001d19b?xsec_token=AB4Lgal3VFuVStkMxwMQVrlRWIqCKHUl2WuP4h95x-IzI=&xsec_source=pc_note" target="_blank" class="block w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
                         <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
                             <div>
@@ -640,217 +427,8 @@
         <p class="text-slate-400">感谢您的观看</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 背景粒子效果
-            const canvas = document.getElementById('particle-canvas');
-            if(canvas) {
-                const ctx = canvas.getContext('2d');
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+    <div id="modal-overlay" class="hidden"></div>
 
-                let particlesArray;
-
-                const particleCount = 100;
-                const maxDistance = 100;
-
-                class Particle {
-                    constructor() {
-                        this.x = Math.random() * canvas.width;
-                        this.y = Math.random() * canvas.height;
-                        this.size = Math.random() * 2 + 1;
-                        this.speedX = Math.random() * 0.6 - 0.3;
-                        this.speedY = Math.random() * 0.6 - 0.3;
-                        this.color = 'rgba(100, 100, 100, 0.5)';
-                    }
-                    update() {
-                        if (this.x > canvas.width || this.x < 0) { this.speedX = -this.speedX; }
-                        if (this.y > canvas.height || this.y < 0) { this.speedY = -this.speedY; }
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-                    }
-                    draw() {
-                        ctx.fillStyle = this.color;
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.closePath();
-                        ctx.fill();
-                    }
-                }
-
-                function initParticles() {
-                    particlesArray = [];
-                    for (let i = 0; i < particleCount; i++) {
-                        particlesArray.push(new Particle());
-                    }
-                }
-
-                function connectParticles() {
-                    for (let a = 0; a < particlesArray.length; a++) {
-                        for (let b = a; b < particlesArray.length; b++) {
-                            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                                         + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                            if (distance < (maxDistance * maxDistance)) {
-                                ctx.strokeStyle = `rgba(100, 100, 100, ${1 - distance / (maxDistance * maxDistance)})`;
-                                ctx.lineWidth = 0.5;
-                                ctx.beginPath();
-                                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                                ctx.stroke();
-                            }
-                        }
-                    }
-                }
-
-                function animateParticles() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    for (let i = 0; i < particlesArray.length; i++) {
-                        particlesArray[i].update();
-                        particlesArray[i].draw();
-                    }
-                    connectParticles();
-                    requestAnimationFrame(animateParticles);
-                }
-
-                window.addEventListener('resize', () => {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                    initParticles();
-                });
-
-                initParticles();
-                animateParticles();
-            }
-
-            // 滚动显示动画
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                revealObserver.observe(el);
-            });
-
-            // 数字滚动动画
-            const animateCounters = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counters = entry.target.querySelectorAll('.counter-value');
-                        counters.forEach(counter => {
-                            if (counter.hasAttribute('data-animated')) return;
-                            counter.setAttribute('data-animated', 'true');
-                            
-                            const target = +counter.getAttribute('data-target');
-                            const isDecimal = counter.getAttribute('data-decimal') === 'true';
-                            let current = 0;
-                            const duration = 1500;
-                            const stepTime = 20;
-                            const steps = duration / stepTime;
-                            const increment = target / steps;
-
-                            const updateCount = () => {
-                                current += increment;
-                                if (current < target) {
-                                    counter.innerText = isDecimal ? current.toFixed(isDecimal && target.toString().includes('.') ? target.toString().split('.')[1].length : 1) : Math.ceil(current).toLocaleString();
-                                    setTimeout(updateCount, stepTime);
-                                } else {
-                                    counter.innerText = isDecimal ? target.toFixed(isDecimal && target.toString().includes('.') ? target.toString().split('.')[1].length : 1) : target.toLocaleString();
-                                }
-                            };
-                            updateCount();
-                        });
-                    }
-                });
-            };
-            
-            const counterObserver = new IntersectionObserver(animateCounters, { threshold: 0.5 });
-            document.querySelectorAll('.reveal .grid').forEach(section => {
-                counterObserver.observe(section);
-            });
-            
-            // 标签体系数据
-            const DEMAND_DESCRIPTIONS = {
-                "生成ppt": "用户希望生成演示文稿（PPT）的框架、单页或完整内容。", "提问解答": "用户提出以获取客观信息、知识或可操作方案为目的的具体问题。", "写作": "用户希望从无到有地创作各类文本内容。", "生图生视频": "用户希望根据文本描述生成图片、视频、图表或进行视觉设计。", "语言翻译": "用户需要进行语言之间的翻译。", "做题解题": "用户提供具体的学科题目，希望得到解答步骤、答案或思路分析。", "聊天陪伴": "用户的核心目的在于进行开放式对话、情感交流、娱乐或消遣。", "总结内容": "用户提供一段文本、文章或对话，希望提炼其核心要点。", "文字游戏": "用户与AI进行有规则或角色的互动扮演游戏。", "代码任务": "用户希望AI完成代码编写、调试、优化等任务。", "其他": "不完整的文本内容或无意义文本内容。"
-            };
-            const SUB_DOMAIN_DEFINITIONS = {
-                "教育与学习": ["大学及以上学生做题", "论文综述", "教师模拟出题", "教学备课", "作业批改", "学习规划", "高薪人才职业考试", "考公考编", "入职培训", "考研", "生活技术证书考试", "高中及以下学生做题", "语言学习", "口语陪练", "作文写作"], "工作与职业": ["工作任务与汇报", "数据处理与分析", "求职与招聘", "技能学习", "职场科普", "职场沟通"], "商业与金融": ["市场营销", "企业管理", "财务会计", "投资理财"], "IT编程": ["代码debug", "代码生成", "代码解释", "编程学习"], "软件使用技巧": ["办公软件", "电脑操作", "手机操作", "游戏软件", "其他软件使用"], "硬件与工程": ["电子电气工程", "机械与制造工程", "土木与建筑工程", "其他技术工程"], "健康与医疗": ["医疗问诊与科普", "专业医学辅助", "营养与饮食", "运动健身", "减肥", "心理疏导"], "法律": ["法律查询", "法律文书草拟", "法律审查"], "政治与公共事务": ["国内政治与政策", "国际政治与政策"], "人文与社科": ["历史", "文学", "哲学", "社会科学"], "创作与表达": ["专业文案写作", "娱乐文案写作", "游戏动漫", "影视", "小说写作"], "日常生活与常识": ["居家生活", "餐饮烹饪", "旅行出行", "家庭事务", "恋爱教练", "闲聊"], "休闲娱乐与兴趣": ["影视", "阅读", "游戏动漫", "音乐与播客", "体育运动", "玄学占卜", "其他兴趣爱好"], "其他": ["无法区分内容"], "文字游戏": ["文字游戏"], "语言翻译": ["语言翻译"], "社会保障": ["医疗保险", "养老保险", "失业保险", "工伤保险", "生育保险", "住房公积金", "社会福利政策", "其他社会保障内容"]
-            };
-
-            // 标签体系卡片化
-            const demandCardsContainer = document.getElementById('demand-cards');
-            const domainListContainer = document.getElementById('domain-list');
-            const subdomainListContainer = document.getElementById('subdomain-list');
-
-            if (demandCardsContainer && domainListContainer && subdomainListContainer) {
-                const allDemands = {...DEMAND_DESCRIPTIONS, "需求占位": "这是一个用于匹配PDF中12个一级标签的占位符。"};
-
-                for (const [demand, description] of Object.entries(allDemands)) {
-                    const card = document.createElement('div');
-                    card.className = 'demand-card glassmorphism rounded-lg p-4 flex items-center justify-center text-center h-24';
-                    card.innerHTML = `<h5 class="font-semibold text-white">${demand}</h5><div class="description text-slate-300">${description}</div>`;
-                    demandCardsContainer.appendChild(card);
-                }
-
-                for (const domain of Object.keys(SUB_DOMAIN_DEFINITIONS)) {
-                    const item = document.createElement('div');
-                    item.className = 'domain-item text-slate-300';
-                    item.textContent = `${domain} (${SUB_DOMAIN_DEFINITIONS[domain].length})`;
-                    item.dataset.domain = domain;
-                    domainListContainer.appendChild(item);
-                }
-
-                domainListContainer.addEventListener('click', (e) => {
-                    const target = e.target.closest('.domain-item');
-                    if (!target) return;
-                    domainListContainer.querySelectorAll('.domain-item').forEach(el => el.classList.remove('active'));
-                    target.classList.add('active');
-                    const domainKey = target.dataset.domain;
-                    const subdomains = SUB_DOMAIN_DEFINITIONS[domainKey];
-                    subdomainListContainer.innerHTML = '';
-                    const innerContainer = document.createElement('div');
-                    innerContainer.className = 'subdomain-list-inner';
-                    subdomains.forEach(sub => {
-                        const span = document.createElement('span');
-                        span.textContent = sub;
-                        innerContainer.appendChild(span);
-                    });
-                    subdomainListContainer.appendChild(innerContainer);
-                });
-                
-                if(domainListContainer.firstChild) {
-                    domainListContainer.firstChild.click();
-                }
-            }
-
-            // 时间轴动画
-            const timelineContainer = document.getElementById('timeline-container');
-            if (timelineContainer) {
-                const timelineProgress = timelineContainer.querySelector('.timeline-progress');
-                window.addEventListener('scroll', () => {
-                    const rect = timelineContainer.getBoundingClientRect();
-                    const start = rect.top + window.scrollY;
-                    const end = rect.bottom + window.scrollY;
-                    const height = rect.height;
-                    
-                    const scrollY = window.scrollY;
-                    let progress = 0;
-                    
-                    if (scrollY > start && scrollY < end) {
-                        progress = ((scrollY - start) / height) * 100;
-                    } else if (scrollY >= end) {
-                        progress = 100;
-                    }
-                    
-                    timelineProgress.style.height = `${progress}%`;
-                });
-            }
-
-            // 视频跳转逻辑 - 已通过 <a> 标签实现，无需 JavaScript
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
