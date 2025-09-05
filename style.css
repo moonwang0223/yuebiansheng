@@ -260,9 +260,7 @@ body {
     50% { border-color: white; } /* 光标颜色 */
 }
 
-/* ============== 卡片翻转和模态框样式 ============== */
-
-/* 遮罩层样式 */
+/* 卡片翻转和模态框样式 */
 #modal-overlay {
     position: fixed;
     inset: 0;
@@ -276,14 +274,10 @@ body {
     opacity: 1;
     pointer-events: auto;
 }
-
-/* 翻转卡片的外部容器，用于提供3D透视效果 */
 .flip-card-container {
     perspective: 1500px;
     min-height: 150px;
 }
-
-/* 翻转卡片本身，将作为动画的主体 */
 .flip-card {
     position: relative;
     width: 100%;
@@ -292,8 +286,6 @@ body {
     transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
 }
-
-/* 卡片激活（放大居中）时的样式 */
 .flip-card-container.is-active .flip-card {
     position: fixed;
     top: 50%;
@@ -306,8 +298,6 @@ body {
     z-index: 50;
     cursor: default;
 }
-
-/* 卡片的正反面通用样式 */
 .flip-card-front,
 .flip-card-back {
     position: absolute;
@@ -318,31 +308,21 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-/* 卡片背面样式，预先绕Y轴翻转180度 */
 .flip-card-back {
     transform: rotateY(180deg);
     overflow-y: auto;
     align-items: flex-start;
 }
-
-/* 修复：防止背面卡片在激活状态下响应通用的悬浮效果 */
 .flip-card-back:hover {
     transform: rotateY(180deg);
 }
-
-/* 背面内容区的包裹层 */
 .card-content-wrapper {
     width: 100%;
 }
-
-/* 新增：调整翻转卡片背面的文字样式 */
 .flip-card-back .card-content-wrapper p {
     font-size: 16px;
     line-height: 1.5;
 }
-
-/* 关闭按钮 */
 .close-button {
     position: absolute;
     top: 1rem;
@@ -354,8 +334,93 @@ body {
     cursor: pointer;
     line-height: 1;
     transition: color 0.2s ease;
-    z-index: 51; /* 确保在内容之上 */
+    z-index: 51;
 }
 .close-button:hover {
     color: #e2e8f0;
 }
+
+/* 脚本优化表格样式 */
+.script-optimization-table-container {
+    overflow: hidden;
+}
+.script-optimization-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.script-optimization-table th,
+.script-optimization-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.25rem;
+    text-align: left;
+    vertical-align: top;
+}
+.script-optimization-table thead th {
+    color: #9ca3af;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-bottom-width: 2px;
+}
+.script-optimization-table tbody td:first-child {
+    font-weight: 700;
+    color: #e2e8f0;
+    white-space: nowrap;
+}
+.script-optimization-table ul.custom-list {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+}
+.script-optimization-table ul.custom-list li + li {
+    margin-top: 0.5rem;
+}
+.table-image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    align-items: flex-start; /* 垂直方向对齐 */
+}
+.table-image-gallery.large {
+    gap: 1.5rem;
+}
+.table-image {
+    border-radius: 0.375rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    object-fit: cover;
+    /* --- 核心改动：图片自适应与尺寸限制 --- */
+    flex: 1; /* 让图片在 flex 容器中弹性伸缩 */
+    min-width: 80px; /* 保证图片不会被过度压缩 */
+    max-width: 150px; /* 限制图片放大的最大尺寸 */
+}
+.table-image-gallery.large .table-image {
+    max-width: 200px; /* 两个图片的行可以稍大一些 */
+}
+.person-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* 让两个卡片平分空间 */
+}
+.person-link {
+    margin-top: 0.5rem;
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.person-link:hover {
+    color: #93c5fd;
+}
+/* --- 核心改动：表格内粗体变蓝色 --- */
+.script-optimization-table b {
+    color: #60a5fa; /* Tailwind CSS 的 text-blue-400 */
+}
+/* --- 添加这段代码以修复折叠功能 --- */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+/* ------------------------------------ */
