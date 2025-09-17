@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subdomainListContainer = document.getElementById('subdomain-list');
 
     if (demandCardsContainer && domainListContainer && subdomainListContainer) {
-        const allDemands = {...DEMAND_DESCRIPTIONS, "需求占位": "这是一个用于匹配PDF中12个一级标签的占位符。"};
+        const allDemands = {...DEMAND_DESCRIPTIONS, "深度研究": "用户使用了深度研究的产品功能。"};
         for (const [demand, description] of Object.entries(allDemands)) {
             const card = document.createElement('div');
             card.className = 'demand-card glassmorphism rounded-lg p-4 flex items-center justify-center text-center h-24';
