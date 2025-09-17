@@ -21,7 +21,209 @@ body {
     background: #718096;
 }
 
-/* 动画效果 */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5; /* 降低粒子效果的亮度，与新背景融合 */
+}
+
+/* ==================================================== */
+/* 游戏化引导页专属样式                */
+/* ==================================================== */
+.intro-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0a0a0a;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- 核心改动 1: 为引导页背景图添加暗色叠加层 --- */
+#start-page, #profile-page, #level-select-page {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#start-page {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('起始页.png');
+}
+#profile-page {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('个人定位.png');
+}
+#level-select-page {
+    background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('关卡选择.png');
+}
+
+
+.intro-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: intro-reveal-anim 0.8s ease-out forwards;
+}
+
+@keyframes intro-reveal-anim {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- 核心改动 2: 为关键文字添加柔和阴影 --- */
+#start-page h1, #start-page p,
+#profile-page h2, #profile-page p:not(.text-slate-400),
+#level-select-page h2, #level-select-page p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+
+.cta-button-glass {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.75rem 2.5rem;
+    border: 1px solid rgba(66, 153, 225, 0.2);
+    background: rgba(66, 153, 225, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #e2e8f0;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); /* 按钮文字也加上阴影 */
+}
+.cta-button-glass:hover {
+    background: rgba(66, 153, 225, 0.2);
+    border-color: rgba(66, 153, 225, 0.4);
+    color: #fff;
+    box-shadow: 0 0 25px rgba(66, 153, 225, 0.3);
+    transform: translateY(-3px);
+}
+
+.profile-avatar {
+    max-width: 350px;
+    width: 100%;
+    align-self: flex-end;
+}
+        
+.level-cards-wrapper {
+    display: flex;
+    justify-content: center;
+    transform: skewX(-15deg);
+    margin-top: 3rem;
+}
+.level-card {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 280px;
+    height: 450px;
+    margin-left: -4rem;
+    transform-origin: bottom left; 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    text-decoration: none;
+}
+.level-card:first-child {
+    margin-left: 0;
+}
+
+.level-card-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: grayscale(100%);
+}
+
+.level-card-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 20%, transparent);
+}
+
+.level-card:hover {
+    transform: skewX(15deg) scale(1.1);
+    box-shadow: 0 0 40px rgba(66, 153, 225, 0.5);
+    z-index: 10;
+    border-color: #4299e1;
+}
+.level-card:hover .level-card-image {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.level-card .level-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+.level-card .level-description {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    line-height: 1.4;
+    transition: transform 0.3s ease;
+}
+.level-card:hover .level-title,
+.level-card:hover .level-description {
+    transform: translateY(-5px);
+}
+        
+.back-to-levels-btn {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+}
+.back-to-levels-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+.back-to-levels-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+}
+
+/* 您原有的样式 */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
@@ -32,7 +234,6 @@ body {
     transform: translateY(0);
 }
 
-/* 标题下划线动画 */
 .title-underline::after {
     content: '';
     display: block;
@@ -41,13 +242,23 @@ body {
     background: #4299e1;
     transition: width 0.5s ease-in-out;
     margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text-center .title-underline::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+.text-left .title-underline::after {
+    margin-left: 0;
+    margin-right: auto;
 }
 .visible .title-underline::after {
     width: 80px;
 }
 
 .subtitle-underline::after {
-     content: '';
+    content: '';
     display: block;
     width: 0;
     height: 2px;
@@ -59,7 +270,6 @@ body {
     width: 100%;
 }
 
-/* 水平滚动容器 */
 .horizontal-scroll-container {
     position: relative;
 }
@@ -74,34 +284,44 @@ body {
     animation: bounce-horizontal 1.5s infinite;
     pointer-events: none;
 }
-
 @keyframes bounce-horizontal {
     0%, 100% { transform: translate(-50%, -50%); }
     50% { transform: translate(0, -50%); }
 }
-
 .horizontal-scroll {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 .horizontal-scroll::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
 }
 
-/* 玻璃拟态效果 */
+/* --- 核心改动 3: 优化玻璃卡片效果 --- */
 .glassmorphism {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.25); /* 增加不透明度 */
+    backdrop-filter: blur(16px); /* 增加模糊度 */
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(66, 153, 255, 0.2); /* 边框也稍微明显一点 */
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.glassmorphism:hover {
-    background: rgba(255, 255, 255, 0.1);
+.glassmorphism:hover:not(.back-to-levels-btn):not(.level-card):not(.collapsible-header):not(.flip-card-front):not(.flip-card-back) {
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-5px);
 }
+
+.gradient-text {
+    background: linear-gradient(90deg, #4299e1, #63b3ed, #90cdf4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.glassmorphism h3, .glassmorphism p {
+    /* 新增柔和的文字阴影 */
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+
 
 /* 渐变文字 */
 .gradient-text {
@@ -223,8 +443,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .reveal.visible .timeline-dot {
-    transform: scale(1.25) translateX(-50%);
-    box-shadow: 0 0 20px #4299e1;
+    transform: scale(1.25);
 }
 
 @media (min-width: 768px) {
@@ -238,17 +457,6 @@ body {
     }
 }
 
-/* 背景动效 */
-#particle-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
 /* 打字机光标样式 */
 .typing-cursor {
     display: inline-block;
@@ -257,7 +465,7 @@ body {
 
 @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: white; } /* 光标颜色 */
+    50% { border-color: white; }
 }
 
 /* 卡片翻转和模态框样式 */
@@ -314,7 +522,7 @@ body {
     align-items: flex-start;
 }
 .flip-card-back:hover {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateY(0); /* 修复翻转卡片hover效果 */
 }
 .card-content-wrapper {
     width: 100%;
@@ -381,7 +589,7 @@ body {
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1rem;
-    align-items: flex-start; /* 垂直方向对齐 */
+    align-items: flex-start;
 }
 .table-image-gallery.large {
     gap: 1.5rem;
@@ -390,19 +598,18 @@ body {
     border-radius: 0.375rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     object-fit: cover;
-    /* --- 核心改动：图片自适应与尺寸限制 --- */
-    flex: 1; /* 让图片在 flex 容器中弹性伸缩 */
-    min-width: 80px; /* 保证图片不会被过度压缩 */
-    max-width: 150px; /* 限制图片放大的最大尺寸 */
+    flex: 1;
+    min-width: 80px;
+    max-width: 150px;
 }
 .table-image-gallery.large .table-image {
-    max-width: 200px; /* 两个图片的行可以稍大一些 */
+    max-width: 200px;
 }
 .person-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1; /* 让两个卡片平分空间 */
+    flex: 1;
 }
 .person-link {
     margin-top: 0.5rem;
@@ -413,14 +620,15 @@ body {
 .person-link:hover {
     color: #93c5fd;
 }
-/* --- 核心改动：表格内粗体变蓝色 --- */
 .script-optimization-table b {
-    color: #60a5fa; /* Tailwind CSS 的 text-blue-400 */
+    color: #60a5fa;
 }
-/* --- 添加这段代码以修复折叠功能 --- */
 .collapsible-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
 }
-/* ------------------------------------ */
+.case-card {
+    background-size: cover;
+    background-position: center;
+}

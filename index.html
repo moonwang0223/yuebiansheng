@@ -17,509 +17,577 @@
 <body class="antialiased">
     <canvas id="particle-canvas"></canvas>
 
-    <section class="h-screen w-full flex flex-col justify-center items-center text-center p-4 relative overflow-hidden">
+    <div id="start-page" class="intro-page">
         <div class="absolute inset-0 bg-grid-gray-700/[0.2] [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)]"></div>
         <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
         <div class="absolute bottom-0 right-0 w-64 h-64 bg-teal-500 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
         
-        <div class="z-10">
-            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 reveal">王中胜</h1>
-            <h2 class="text-2xl md:text-4xl font-bold text-slate-300 mb-6 reveal" style="transition-delay: 200ms;">Kimi增长创意实习 Review</h2>
-            <p class="text-lg md:text-xl text-slate-400 reveal" style="transition-delay: 400ms;">一条打怪升级的创意探索之路</p>
+        <div class="z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 intro-reveal">Kimi增长创意实习 Review</h1>
+            <p class="text-2xl md:text-3xl text-slate-300 mb-12 intro-reveal" style="animation-delay: 200ms;">一条打怪升级的创意探索之路</p>
+            <button id="start-btn" class="cta-button-glass intro-reveal" style="animation-delay: 400ms;">
+                继续游戏
+            </button>
         </div>
-        <div class="absolute bottom-10 animate-bounce">
-            <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </div>
-    </section>
+    </div>
 
-    <section class="min-h-screen w-full flex flex-col justify-center items-center py-20 px-4 md:px-10">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="reveal text-center">
-                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 title-underline">个人定位</h2>
+    <div id="profile-page" class="intro-page hidden">
+        <div class="max-w-6xl mx-auto w-full px-4 md:px-10">
+            <div class="intro-reveal text-center">
+                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4">个人定位</h2>
                 <p class="text-2xl md:text-3xl gradient-text font-bold mt-8">技术热情与创意工作相结合</p>
             </div>
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="reveal glassmorphism rounded-2xl p-8 md:col-span-1">
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 intro-reveal" style="animation-delay: 200ms;">
+                <div class="glassmorphism rounded-2xl p-8 h-full">
                     <h3 class="text-2xl font-bold text-white mb-3">代码素材Owner</h3>
                     <p class="text-slate-400">技术 x 内容，深度挖掘代码场景价值，将硬核的专业功能转化为兼具表现力与转化效果的视觉内容，为增长提供素材弹药。</p>
                 </div>
-                <div class="reveal glassmorphism rounded-2xl p-8 md:col-span-1" style="transition-delay: 200ms;">
+                <div class="glassmorphism rounded-2xl p-8 h-full">
                     <h3 class="text-2xl font-bold text-white mb-3">自动化提效</h3>
                     <p class="text-slate-400">主动识别并拆解工作流中的重复性痛点，通过设计与开发自动化工具/可复用方法，将标准化流程赋能团队，提升整体协作效率。</p>
                 </div>
-                <div class="reveal glassmorphism rounded-2xl p-8 md:col-span-1" style="transition-delay: 400ms;">
+                <div class="glassmorphism rounded-2xl p-8 h-full">
                     <h3 class="text-2xl font-bold text-white mb-3">原生-去营销化</h3>
                     <p class="text-slate-400">为了提升投放素材的整体质量与用户观感，通过优化脚本话术、把控视觉品质，来对内容品质与专业度进行优化，优化ai脚本，搭建创意专项知识库。</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="py-20 px-4 md:px-10">
-        <div class="max-w-4xl mx-auto">
-            <div class="reveal text-center mb-16">
-                 <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">成长路径</h2>
-            </div>
-            <div id="timeline-container" class="relative">
-                <div class="timeline-line"></div>
-                <div class="timeline-progress"></div>
-                <div class="relative pl-12 md:pl-0 mb-12 reveal">
-                    <div class="md:flex items-center md:justify-end">
-                        <div class="md:w-1/2 md:pr-8 md:text-right">
-                           <div class="glassmorphism p-6 rounded-lg inline-block">
-                                <p class="text-sm text-slate-400">2022.10 - 2023.04</p>
-                                <h4 class="text-xl font-bold mt-1 text-white">兴趣使然的创作</h4>
-                                <p class="mt-2 text-slate-300"><strong>收获：</strong> 积累对视频脚本策划、剪辑、节奏等方面的全流程经验。</p>
-                            </div>
-                        </div>
-                        <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
-                        <div class="md:w-1/2 md:pl-8"></div>
-                    </div>
-                </div>
-                <div class="relative pl-12 md:pl-0 mb-12 reveal">
-                    <div class="md:flex items-center">
-                        <div class="md:w-1/2 md:pr-8"></div>
-                        <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
-                        <div class="md:w-1/2 md:pl-8">
-                           <div class="glassmorphism p-6 rounded-lg">
-                                <p class="text-sm text-slate-400">2023.06 - 2023.11</p>
-                                <h4 class="text-xl font-bold mt-1 text-white">斜杠内容的尝试</h4>
-                                <p class="mt-2 text-slate-300"><strong>收获：</strong> 提升对热点的敏感度，要用数据来回答内容问题，通过数据指导内容策略。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative pl-12 md:pl-0 mb-12 reveal">
-                    <div class="md:flex items-center md:justify-end">
-                        <div class="md:w-1/2 md:pr-8 md:text-right">
-                           <div class="glassmorphism p-6 rounded-lg inline-block">
-                                <p class="text-sm text-slate-400">2024.02 - 2024.05</p>
-                                <h4 class="text-xl font-bold mt-1 text-white">用户思维的培养</h4>
-                                <p class="mt-2 text-slate-300"><strong>收获：</strong> 分析用户行为与反馈信息，提炼用户的核心需求。</p>
-                            </div>
-                        </div>
-                        <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
-                        <div class="md:w-1/2 md:pl-8"></div>
-                    </div>
-                </div>
-                <div class="relative pl-12 md:pl-0 reveal">
-                    <div class="md:flex items-center">
-                         <div class="md:w-1/2 md:pr-8"></div>
-                        <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
-                        <div class="md:w-1/2 md:pl-8">
-                           <div class="glassmorphism p-6 rounded-lg">
-                                <p class="text-sm text-slate-400">至今</p>
-                                <h4 class="text-xl font-bold mt-1 text-white">学术技能的储备</h4>
-                                <p class="mt-2 text-slate-300"><strong>收获：</strong> 锻炼学术思维，进行科学的研究设计，积累编程基础，利用代码来辅助提效。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mt-16 intro-reveal" style="animation-delay: 400ms;">
+                 <button id="profile-next-btn" class="cta-button-glass mt-8">
+                    查看我的任务
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="automation-section" class="min-h-screen py-20 px-4 md:px-10 flex flex-col justify-center">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="reveal">
-                <h3 class="text-sm uppercase text-blue-400 font-bold">Level 1: AI自动化赋能</h3>
-                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">AI赋能，效率革新</h2>
+    <div id="level-select-page" class="intro-page hidden">
+        <div class="max-w-6xl mx-auto w-full px-4 md:px-10 text-center">
+            <div class="intro-reveal mb-12">
+                <h2 class="text-3xl md:text-5xl font-black">关卡选择</h2>
+                <p class="text-xl text-slate-400 mt-4">请选择要查看的篇章</p>
             </div>
             
-            <div class="mt-12 reveal">
-                <h3 class="text-3xl font-bold subtitle-underline mb-6">AI自动审核</h3>
-                <p class="text-lg text-slate-400 max-w-3xl mb-8">面对海量素材审核的挑战，我独立设计并上线了AI自动审核工具，将重复流程标准化、自动化。</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="glassmorphism rounded-2xl p-8 text-center data-card">
-                        <div class="main-text">
-                            <p class="text-6xl md:text-7xl font-black gradient-text counter-value" data-target="80">0</p>
-                            <p class="mt-4 text-lg text-slate-300">审核效率提升 <span class="font-bold text-white">%</span></p>
-                            <p class="text-sm text-slate-500 mt-2">(5分钟/条 → 1分钟/条)</p>
-                        </div>
-                        <p class="impact-text text-blue-300">相当于每天为团队节省数小时重复劳动</p>
+            <div class="level-cards-wrapper">
+                <a href="#automation-section" class="level-card intro-reveal" style="animation-delay: 200ms;">
+                    <img src="ai自动化赋能.png" class="level-card-image" alt="AI自动化赋能">
+                    <div class="level-card-overlay">
+                        <h3 class="level-title">AI自动化赋能</h3>
+                        <p class="level-description">效率革新与体系构建</p>
                     </div>
-                    <div class="glassmorphism rounded-2xl p-8 text-center data-card">
-                        <div class="main-text">
-                            <p class="text-6xl md:text-7xl font-black gradient-text counter-value" data-target="40000">0</p>
-                            <p class="mt-4 text-lg text-slate-300">已处理风险点 <span class="font-bold text-white">+</span></p>
-                            <p class="text-sm text-slate-500 mt-2">(自6月上线以来)</p>
-                        </div>
-                         <p class="impact-text text-blue-300">有效保障合规性，大幅降低拒审风险</p>
+                </a>
+                <a href="#script-optimization-section" class="level-card intro-reveal" style="animation-delay: 400ms;">
+                    <img src="脚本去营销化.png" class="level-card-image" alt="脚本优化">
+                    <div class="level-card-overlay">
+                        <h3 class="level-title">脚本去营销化</h3>
+                        <p class="level-description">提升原生感与信任度</p>
                     </div>
-                    <div class="glassmorphism rounded-2xl p-8 text-center data-card">
-                        <div class="main-text">
-                            <p class="text-6xl md:text-7xl font-black gradient-text">多源</p>
-                            <p class="mt-4 text-lg text-slate-300">整合拒审知识库</p>
-                            <p class="text-sm text-slate-500 mt-2">(覆盖多平台与广告法)</p>
-                        </div>
-                        <p class="impact-text text-blue-300">智能比对并高亮标注违禁词</p>
+                </a>
+                <a href="#case-development-section" class="level-card intro-reveal" style="animation-delay: 600ms;">
+                    <img src="高质量案例展示.png" class="level-card-image" alt="高质量案例开发">
+                    <div class="level-card-overlay">
+                        <h3 class="level-title">高质量案例开发</h3>
+                        <p class="level-description">代码方向素材产出</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="mt-20 reveal">
-                 <h3 class="text-3xl font-bold subtitle-underline mb-6">重构用户Query标签体系</h3>
-                 <p class="text-lg text-slate-400 max-w-3xl mb-8">为了更精准地洞察用户需求，我建立了“用户需求-领域-二级领域”的多维标签体系，为创意和投放提供科学依据。</p>
-                 <div id="tag-visualization-container" class="space-y-8">
-                    <div>
-                        <h4 class="text-xl font-bold text-white mb-4">一级标签：用户需求 (12)</h4>
-                        <div id="demand-cards" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            </div>
+                </a>
+                <a href="#future-outlook-section" class="level-card intro-reveal" style="animation-delay: 800ms;">
+                    <img src="未来展望.png" class="level-card-image" alt="未来展望">
+                    <div class="level-card-overlay">
+                        <h3 class="level-title">未来展望</h3>
+                        <p class="level-description">持续进化，创造价值</p>
                     </div>
-                    <div>
-                        <h4 class="text-xl font-bold text-white mb-4">二级与三级标签：领域与子领域 (19 / 80)</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[400px] md:h-[500px] glassmorphism p-4 rounded-lg">
-                            <div id="domain-list" class="overflow-y-auto pr-2 md:col-span-1">
-                                </div>
-                            <div id="subdomain-list" class="overflow-y-auto border-t md:border-t-0 md:border-l border-slate-700 pt-4 md:pt-0 pl-4 md:col-span-2">
-                                 <div class="flex items-center justify-center h-full text-slate-500">
-                                    <p>← 在左侧选择一个领域</p>
-                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-20 reveal">
-                <div class="collapsible-container mb-16">
-                    <div class="collapsible-header glassmorphism rounded-lg p-6 flex justify-between items-center cursor-pointer">
-                        <h3 class="text-xl md:text-2xl font-bold text-white">脚本自动化 2.0 </h3>
-                        <svg class="w-6 h-6 transform transition-transform text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <div class="mermaid-container mt-2 p-4 md:p-8 glassmorphism rounded-lg">
-                            <pre class="mermaid">
-                            graph TD;
-                                A["制作素材"] --> B("用户体验优化");
-                                B --> C{{"提高专业度、信任度<br/>降低营销感"}};
-                                C --> D("核心难点");
-                                D --> E["1、内容要求更高<br/>更关注同行有书、技术参数等"];
-                                D --> F["2、制作门槛高<br/>缺乏对真实痛点、专业术语的理解"];
-                                D --> G["3、制作效率低、质量不稳定<br/>大多依赖个人和临时调研"];
-                                
-                                subgraph 难点攻克
-                                    E --> H("搭建素材库");
-                                    F --> H;
-                                    G --> H;
-                                end
-                    
-                                subgraph 素材库构成
-                                    direction LR
-                                    H --- I["参考来源: 头部达人/社媒内容"];
-                                    H --- J["实际痛点与使用场景"];
-                                    H --- K["专业话术整理"];
-                                    H --- L["专业领域附件: 代码文件/学习资料/公司财报/数据等"];
-                                end
-                    
-                                H -- "风格式范本+内容输入" --> M["AI脚本"];
-                                H -- "内容框架、拍摄风格、职业形象" --> N["供应商"];
-                                M --> O{{"专业内容素材"}};
-                                N --> O;
-                
-                                style E fill:#4A3A0A,stroke:#FFD700,stroke-width:1px,color:#FFD700
-                                style F fill:#4A3A0A,stroke:#FFD700,stroke-width:1px,color:#FFD700
-                                style G fill:#4A3A0A,stroke:#FFD700,stroke-width:1px,color:#FFD700
-                                style H fill:#1E40AF,stroke:#60A5FA,stroke-width:2px,color:#EFF6FF
-                                style O fill:#166534,stroke:#4ADE80,stroke-width:2px,color:#EFF6FF
-                    
-                                style I fill:transparent,stroke:transparent,color:#9ca3af
-                                style J fill:transparent,stroke:transparent,color:#9ca3af
-                                style K fill:transparent,stroke:transparent,color:#9ca3af
-                                style L fill:transparent,stroke:transparent,color:#9ca3af
-                            </pre>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="mt-16">
-                    <h4 class="text-2xl font-bold text-white mb-6">a. 效果广告AI脚本优化</h4>
-                    <div class="script-optimization-table-container glassmorphism rounded-lg mt-8">
-                        <table class="script-optimization-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 15%;">优化维度</th>
-                                    <th style="width: 42.5%;">内容植入前</th>
-                                    <th style="width: 42.5%;">优化后</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>角色人设</td>
-                                    <td><p><b>刻意塑造人设：</b>我是一个10年的资深程序员, 用Kimi帮我直接解决了......</p><p class="text-slate-500 italic mt-2">(用户OS: 你自己说是，你就是吗?)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：资历金光闪闪，结果混到来信息流里喊我扫码？)</p></td>
-                                    <td>
-                                        <p><b>用话术 & 使用场景来引出角色：</b></p>
-                                        <ul class="custom-list">
-                                            <li>上周，我给Linux服务器上搭一个新的Web服务，结果被一个经典的502 Bad Gateway报错，困扰了整整三个小时</li>
-                                            <li>还在为了实现一个功能，在Stack Overflow上找那些早已过时的代码片段吗?</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>产品定位</td>
-                                    <td><p><b>夸大功能：</b>无所不能的超级神器、国产之光</p><p class="text-slate-500 italic mt-2">(用户OS: 说的天花乱坠，每天都在“变天了”，已经听腻了)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：只要带“国产之光”四个大字，我就默认先打三折——毕竟上一束光刚闪瞎我钱包，现在还在分期还款。)</p></td>
-                                    <td><p><b>辅助提效：</b>你的工作搭子，能够帮你.... <b>关注使用价值</b></p></td>
-                                </tr>
-                                <tr>
-                                    <td>使用方式</td>
-                                    <td><p><b>简单使用：</b>Kimi，帮我Debug / Kimi,帮我写个抢票软件</p><p class="text-slate-500 italic mt-2">(用户OS：我不想看变魔术，想看如何一步步解决真实问题)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：抢票更离谱，它给我生成12306官网链接，附赠一句“祝您抢票顺利”。谢谢，我自己会百度。)</p></td>
-                                    <td>
-                                        <p><b>符合职业习惯：</b></p>
-                                        <ul class="custom-list">
-                                            <li>帮我分析这段代码并给到关键点注释</li>
-                                            <li>基于这份配置文件和错误日志，告诉我报错原因是什么，并给出修正后的代码</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>夸赞视角</td>
-                                    <td><p><b>强调大家都在用：</b>人人都在用的Kimi/ 清华学霸都在用的Kimi/大学生学习神器/</p><p class="text-slate-500 italic mt-2">(用户OS：话术已免疫，自卖自夸，不如多讲讲产品本身)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：人人年薪百万、人人都在用、人人焦虑得睡不着，结果一查“人人”原来就那俩营销号。)</p></td>
-                                    <td>
-                                        <p><b>用权威的榜单，行业技术大牛来背书：</b></p>
-                                        <p class="text-slate-400">体现各个行业bench排行榜，海外用户的case</p>
-                                        <div class="table-image-gallery">
-                                            <img src="table-image-1.png" alt="图表1" class="table-image">
-                                            <img src="table-image-2.png" alt="图表2" class="table-image">
-                                            <img src="table-image-3.png" alt="图表3" class="table-image">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                </tr>
-                                <tr>
-                                    <td>行动号召</td>
-                                    <td><p><b>紧急直接：</b>你秒变行业专家，快点击下方链接，免费体验!</p><p class="text-slate-500 italic mt-2">(用户OS：点一下就变专家，专家也太不值钱了)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：听着比“三天速成诺贝尔奖”还离谱，把“专家”这俩字儿从手术台直接拖进菜市场，一刀切成白菜价。)</p></td>
-                                    <td>
-                                        <p><b>类博主互动：</b>看看大家怎么说、这些只是我探索的一部分，有更多好的使用方法可以评论告诉我</p>
-                                        <p class="mt-2"><b>价值观认同：</b>它开始把老师从那些最耗费心神的案头工作中释放出来，去真正地、用心地、面对面地，回应每一个孩子发出的信号。</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                 </div>
-
-                 <div class="mt-16">
-                    <h4 class="text-2xl font-bold text-white mb-6">b.脚本去营销化</h4>
-                    
-                    <div class="mb-12">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="reveal glassmorphism rounded-2xl p-8">
-                                <h3 class="text-xl font-bold text-white mb-4">痛点</h3>
-                                <p class="text-slate-400">专业演员营销感重，内容原生感不足；素人博主缺乏文案功底，合作周期长达1-2个月。</p>
-                            </div>
-                            <div class="reveal glassmorphism rounded-2xl p-8" style="transition-delay: 200ms;">
-                                <h3 class="text-xl font-bold text-white mb-4">解决方案</h3>
-                                <p class="text-slate-400">筛选合适的素人博主，并为其提供由AI生成的定制化脚本，将合作周期压缩到1-2周。</p>
-                            </div>
-                            <div class="reveal glassmorphism rounded-2xl p-8" style="transition-delay: 400ms;">
-                                <h3 class="text-xl font-bold text-white mb-4">核心方法</h3>
-                                <p class="text-slate-400">不依赖固定模版，关注达人风格化的叙事框架、语言风格等，生成动态创作原则并输出脚本。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        
-                        <div class="flip-card-container">
-                            <div class="flip-card">
-                                <div class="flip-card-front glassmorphism rounded-lg p-6 flex flex-col justify-center items-center text-center">
-                                    <h3 class="text-xl font-bold text-white">专业博主+结构化教学</h3>
-                                    <p class="text-slate-400 mt-4">点击查看详情</p>
-                                </div>
-                                <div class="flip-card-back glassmorphism rounded-lg px-12 py-12 text-sm text-slate-300 space-y-3">
-                                    <button class="close-button">&times;</button>
-                                    <div class="card-content-wrapper">
-                                        <p>当代策略人的崩溃，我懂。所以我整合了一期详细的Kimi使用指南，就是为了让每个人，<strong class="text-blue-300">从“手动挡”一键切换到“自动挡”。</strong></p>
-                                        <p><strong class="text-blue-300">第一部分：Kimi当助理，解决80%的繁杂分析。</strong></p>
-                                        <p>第一，市场爆点分析。像这样直接输入公式：【2025年 女性护肤品 传播爆点】。过去要花几天搜集的资料，Kimi三分钟就能完成。厉害的是，它不只给出爆点，还会<strong class="text-blue-300">深入分析背后的社会心理和文化动因，等于直接给了一份洞察报告。</strong></p>
-                                        <p>第二，营销方案起草。用这个公式：【用‘黄金公式’拆解XX品牌 输出策划方案】。Kimi能快速生成一份逻辑全面的方案初稿。不止于此，它还是你的“策略风险扫描仪”。你把自己的方案喂给它，它能用同样的框架，以表格形式清晰指出方案的逻辑漏洞和优化建议。</p>
-                                        <p>解决了繁杂工作，我们再谈如何成为高阶玩家。</p>
-                                        <p><strong class="text-blue-300">第二部分：吸收Kimi的策略智慧，成为超强个体。</strong></p>
-                                        <p>首先，<strong class="text-blue-300">构建你的专属分析模型。</strong> 通过和Kimi的多轮对话追问，<strong class="text-blue-300">引导它一步步解构复杂的商业题，</strong> 最终生成一个包含市场机会、用户画像、产品定位等维度的、你专属的分析模型。</p>
-                                        <p>其次，快速学习一个新赛道。把几十份行业研报、财报一次性投给Kimi，让它【生成行业商业模式图谱并分析核心竞争要素】。<strong class="text-blue-300">几周的学习周期，现在一天就能搞定。</strong></p>
-                                        <p>掌握这些技巧，你就能在AI时代，<strong class="text-blue-300">从繁杂的细节中解放出来，变身“超强策略个体”。</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flip-card-container">
-                            <div class="flip-card">
-                                <div class="flip-card-front glassmorphism rounded-lg p-6 flex flex-col justify-center items-center text-center">
-                                    <h3 class="text-xl font-bold text-white">小红书博主+反思成长故事</h3>
-                                    <p class="text-slate-400 mt-4">点击查看详情</p>
-                                </div>
-                                <div class="flip-card-back glassmorphism rounded-lg px-12 py-12 text-sm text-slate-300 space-y-3">
-                                    <button class="close-button">&times;</button>
-                                    <div class="card-content-wrapper">
-                                        <p>刚入行时，我在一家大广告公司做策略助理。说白了，就是把几十页的报告，搬运到PPT里。开会可以不发言，但老板要的50页PPT，你今晚必须做完。</p>
-                                        <p>我当时并不是在靠策略能力赚钱，<strong class="text-blue-300">我是在靠我的耐心和视力。</strong></p>
-                                        <p>直到有一次为了比稿，我整合十几份报告到凌晨三点，满脑子都是复制粘贴，我突然就崩溃了。我瘫在椅子上问自己：<strong class="text-blue-300">我读了那么多书，做了那么多案例，我为什么要靠“策略体力活”来赚钱？</strong></p>
-                                        <p>那一刻我才意识到，<strong class="text-blue-300">我真正的价值，是我的思考，而不是我的“擅长熬夜”。</strong></p>
-                                        <p>后来，我发现了一种全新的工作方式。</p>
-                                        <p>比如，分析“2025年女性护肤品爆点”这种事，不再需要我花几天去搜集资料。我直接把问题扔给Kimi，它几分钟就能给我一份洞察报告，还分析了背后的社会心理。</p>
-                                        <p>再比如，用【黄金公式】做方案，我不再需要自己去填充里面的每一个格子。我让Kimi帮我拆解，我只负责在它的答案之上，进行更高维度的决策。</p>
-                                        <p><strong class="text-blue-300">我的工作重心，彻底从“寻找答案”，转移到了“提出一个好问题”上。</strong></p>
-                                        <p>所以，希望所有同行都能认识到，无休止地堆砌资料、通宵做PPT，这些都不是你的分内工作。<strong class="text-blue-300">你的优秀，不代表你应该被物化成一个信息处理器。</strong></p>
-                                        <p><strong class="text-blue-300">你的才华，是用来创造和判断的，不是用来消耗在复制粘贴里的。</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                 </div>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="py-20 mt-32">
-        <div class="max-w-6xl mx-auto px-4 md:px-10 reveal">
-            <h3 class="text-sm uppercase text-blue-400 font-bold">Level 2: 增长素材创意产出</h3>
-            <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 title-underline">高质量案例开发</h2>
-            <p class="text-lg text-slate-400 max-w-3xl">
-                素材落地<span class="gradient-text font-bold text-2xl md:text-3xl">100+</span>，
-                贡献了<span class="gradient-text font-bold text-2xl md:text-3xl">70%</span>的代码方向素材，
-                总消耗超<span class="gradient-text font-bold text-2xl md:text-3xl">120万</span>。
-            </p>
-        </div>
-        <div class="mt-12 horizontal-scroll-container">
-             <div class="horizontal-scroll py-4 pl-4 md:pl-10 lg:pl-20 xl:pl-32">
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('1-地球.png'); background-size: cover; background-position: center;">
-                    <a href="https://tos.mobgi.com/tos_beijing/material_2/20250527/12400082056/12400082056/09072ae82e5152b8c9073ba0de3ec2c8.mp4" target="_blank" class="block w-full h-full">
-                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                            <div>
-                                <p class="text-sm text-blue-400">AI动画</p>
-                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">教育 x 代码</h4>
-                                <p class="text-slate-200 mt-2">案例展示：将地球模型制作与备课场景结合，直击教师痛点。</p>
-                            </div>
-                            <div class="mt-6 border-t border-slate-700 pt-4">
-                                <p class="text-3xl font-bold gradient-text">45w+</p>
-                                <p class="text-slate-300">总消耗</p>
-                                <p class="text-sm text-slate-400">连续四周投放Top3</p>
-                            </div>
-                        </div>
-                    </a>
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000 relative" style="pointer-events: none;">
+        
+        <button id="back-to-levels-btn" class="back-to-levels-btn glassmorphism">
+            <svg class="w-6 h-6 text-slate-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6A2.25 2.25 0 0115.75 3.75h2.25A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75A2.25 2.25 0 0115.75 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+            </svg>
+        </button>
+
+        <section class="h-screen w-full flex flex-col justify-center items-center text-center p-4 relative overflow-hidden">
+            <div class="absolute inset-0 bg-grid-gray-700/[0.2] [mask-image:linear-gradient(to_bottom,white_20%,transparent_100%)]"></div>
+            <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-teal-500 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+            <div class="z-10">
+                <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 reveal">王中胜</h1>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-300 mb-6 reveal" style="transition-delay: 200ms;">Kimi增长创意实习 Review</h2>
+                <p class="text-lg md:text-xl text-slate-400 reveal" style="transition-delay: 400ms;">一条打怪升级的创意探索之路</p>
+            </div>
+            <div class="absolute bottom-10 animate-bounce">
+                <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </section>
+        <section class="min-h-screen w-full flex flex-col justify-center items-center py-20 px-4 md:px-10">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="reveal text-center">
+                    <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 title-underline">个人定位</h2>
+                    <p class="text-2xl md:text-3xl gradient-text font-bold mt-8">技术热情与创意工作相结合</p>
                 </div>
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('2-侠客.png'); background-size: cover; background-position: center; transition-delay: 150ms;">
-                    <a href="https://tos.mobgi.com/tos_beijing/material_2/20250523/12400082056/12400082056/daf00cc9a65dac1f14557f625b6069ee.mp4" target="_blank" class="block w-full h-full">
-                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                            <div>
-                                <p class="text-sm text-blue-400">AI动画</p>
-                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">游戏 x 代码</h4>
-                                <p class="text-slate-200 mt-2">案例展示：肉鸽游戏“k侠”，结合热点游戏元素，升级游戏素材表现力。</p>
-                            </div>
-                            <div class="mt-6 border-t border-slate-700 pt-4">
-                                <p class="text-3xl font-bold gradient-text">20w+</p>
-                                <p class="text-slate-300">总消耗</p>
-                                <p class="text-sm text-slate-400">创新游戏素材包装</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('3-代码.png'); background-size: cover; background-position: center; transition-delay: 300ms;">
-                    <a href="https://tos.mobgi.com/tos_beijing/material_2/20250723/12400082056/12400096371/aa4f59f6c0348eb8dd8f2c4312f3b160.mp4" target="_blank" class="block w-full h-full">
-                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                            <div>
-                                <p class="text-sm text-blue-400">包装剪辑/信息流</p>
-                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">专业知识科普</h4>
-                                <p class="text-slate-200 mt-2">案例展示：兼具专业性与视觉表现力，提升专业用户转化。</p>
-                            </div>
-                            <div class="mt-6 border-t border-slate-700 pt-4">
-                                <p class="text-3xl font-bold gradient-text">10w+</p>
-                                <p class="text-slate-300">总消耗</p>
-                                <p class="text-sm text-slate-400">素材专业化</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('4-专业包剪.png'); background-size: cover; background-position: center; transition-delay: 450ms;">
-                    <a href="https://tos.mobgi.com/tos_beijing/material_5/20250801/12400082056/12400096389/599b9128002193aa0c9c31695d1c7f2e.mp4?uid=12400107651" target="_blank" class="block w-full h-full">
-                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                            <div>
-                                <p class="text-sm text-blue-400">k2素材上新</p>
-                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">质量包剪</h4>
-                                <p class="text-slate-200 mt-2">案例展示：参考海外宣传，提升包装剪辑品质，去营销化</p>
-                            </div>
-                            <div class="mt-6 border-t border-slate-700 pt-4">
-                                <p class="text-3xl font-bold gradient-text">Top3</p>
-                                <p class="text-slate-300">首周投放数据反馈</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
-                     style="background-image: url('5-小红书.png'); background-size: cover; background-position: center; transition-delay: 600ms;">
-                    <a href="https://www.xiaohongshu.com/user/profile/647fe749000000001001d19b?xsec_token=AB4Lgal3VFuVStkMxwMQVrlRWIqCKHUl2WuP4h95x-IzI=&xsec_source=pc_note" target="_blank" class="block w-full h-full">
-                        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-                        <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
-                            <div>
-                                <p class="text-sm text-blue-400">社媒运营</p>
-                                <h4 class="case-card-title text-2xl font-bold mt-2 text-white">小红书内容制作</h4>
-                                <p class="text-slate-200 mt-2">负责图文内容制作与发布，探索原生内容流量。</p>
-                            </div>
-                            <div class="mt-6 border-t border-slate-700 pt-4">
-                                <p class="text-3xl font-bold gradient-text">2700+</p>
-                                <p class="text-slate-300">总获赞与收藏</p>
-                                <p class="text-sm text-slate-400">从0到1的账号尝试</p>
-                            </div>
-                        </div>
-                    </a>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="reveal glassmorphism rounded-2xl p-8 md:col-span-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">代码素材Owner</h3>
+                        <p class="text-slate-400">技术 x 内容，深度挖掘代码场景价值，将硬核的专业功能转化为兼具表现力与转化效果的视觉内容，为增长提供素材弹药。</p>
+                    </div>
+                    <div class="reveal glassmorphism rounded-2xl p-8 md:col-span-1" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold text-white mb-3">自动化提效</h3>
+                        <p class="text-slate-400">主动识别并拆解工作流中的重复性痛点，通过设计与开发自动化工具/可复用方法，将标准化流程赋能团队，提升整体协作效率。</p>
+                    </div>
+                    <div class="reveal glassmorphism rounded-2xl p-8 md:col-span-1" style="transition-delay: 400ms;">
+                        <h3 class="text-2xl font-bold text-white mb-3">原生-去营销化</h3>
+                        <p class="text-slate-400">为了提升投放素材的整体质量与用户观感，通过优化脚本话术、把控视觉品质，来对内容品质与专业度进行优化，优化ai脚本，搭建创意专项知识库。</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="min-h-screen py-20 px-4 md:px-10 flex items-center">
-        <div class="max-w-6xl mx-auto w-full">
-            <div class="reveal">
-                <h3 class="text-sm uppercase text-blue-400 font-bold">Final Level: 未来展望</h3>
-                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">持续进化，创造价值</h2>
-                <p class="text-lg text-slate-400 max-w-3xl">基于本次实习的积累，我将继续在以下三个方向深耕，为团队创造更大价值。</p>
+        </section>
+        <section class="py-20 px-4 md:px-10">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal text-center mb-16">
+                     <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">成长路径</h2>
+                </div>
+                <div id="timeline-container" class="relative">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-progress"></div>
+                    <div class="relative pl-12 md:pl-0 mb-12 reveal">
+                        <div class="md:flex items-center md:justify-end">
+                            <div class="md:w-1/2 md:pr-8 md:text-right">
+                               <div class="glassmorphism p-6 rounded-lg inline-block">
+                                    <p class="text-sm text-slate-400">2022.10 - 2023.04</p>
+                                    <h4 class="text-xl font-bold mt-1 text-white">兴趣使然的创作</h4>
+                                    <p class="mt-2 text-slate-300"><strong>收获：</strong> 积累对视频脚本策划、剪辑、节奏等方面的全流程经验。</p>
+                                </div>
+                            </div>
+                            <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
+                            <div class="md:w-1/2 md:pl-8"></div>
+                        </div>
+                    </div>
+                    <div class="relative pl-12 md:pl-0 mb-12 reveal">
+                        <div class="md:flex items-center">
+                            <div class="md:w-1/2 md:pr-8"></div>
+                            <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
+                            <div class="md:w-1/2 md:pl-8">
+                               <div class="glassmorphism p-6 rounded-lg">
+                                    <p class="text-sm text-slate-400">2023.06 - 2023.11</p>
+                                    <h4 class="text-xl font-bold mt-1 text-white">斜杠内容的尝试</h4>
+                                    <p class="mt-2 text-slate-300"><strong>收获：</strong> 提升对热点的敏感度，要用数据来回答内容问题，通过数据指导内容策略。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative pl-12 md:pl-0 mb-12 reveal">
+                        <div class="md:flex items-center md:justify-end">
+                            <div class="md:w-1/2 md:pr-8 md:text-right">
+                               <div class="glassmorphism p-6 rounded-lg inline-block">
+                                    <p class="text-sm text-slate-400">2024.02 - 2024.05</p>
+                                    <h4 class="text-xl font-bold mt-1 text-white">用户思维的培养</h4>
+                                    <p class="mt-2 text-slate-300"><strong>收获：</strong> 分析用户行为与反馈信息，提炼用户的核心需求。</p>
+                                </div>
+                            </div>
+                            <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
+                            <div class="md:w-1/2 md:pl-8"></div>
+                        </div>
+                    </div>
+                    <div class="relative pl-12 md:pl-0 reveal">
+                        <div class="md:flex items-center">
+                             <div class="md:w-1/2 md:pr-8"></div>
+                            <div class="timeline-dot absolute w-5 h-5 bg-blue-500 rounded-full mt-1.5 -left-2 md:left-1/2 md:-translate-x-1/2 border-4 border-[#0a0a0a]"></div>
+                            <div class="md:w-1/2 md:pl-8">
+                               <div class="glassmorphism p-6 rounded-lg">
+                                    <p class="text-sm text-slate-400">至今</p>
+                                    <h4 class="text-xl font-bold mt-1 text-white">学术技能的储备</h4>
+                                    <p class="mt-2 text-slate-300"><strong>收获：</strong> 锻炼学术思维，进行科学的研究设计，积累编程基础，利用代码来辅助提效。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+        </section>
+        <section id="automation-section" class="min-h-screen py-20 px-4 md:px-10 flex flex-col justify-center">
+            <div class="max-w-6xl mx-auto w-full">
                 <div class="reveal">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                        <h4 class="text-2xl font-bold">探索AI自动化赋能</h4>
-                    </div>
-                    <p class="text-slate-400">识别业务当前工作流中能被AI大模型替代的人工环节,协助团队开发和优化自动化工具,提高整体工作效率。</p>
+                    <h3 class="text-sm uppercase text-blue-400 font-bold">Level 1: AI自动化赋能</h3>
+                    <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">AI赋能，效率革新</h2>
                 </div>
-                <div class="reveal" style="transition-delay: 200ms;">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                        <h4 class="text-2xl font-bold">专业品质素材产出</h4>
+                <div class="mt-12 reveal">
+                    <h3 class="text-3xl font-bold subtitle-underline mb-6">AI自动审核</h3>
+                    <p class="text-lg text-slate-400 max-w-3xl mb-8">面对海量素材审核的挑战，我独立设计并上线了AI自动审核工具，将重复流程标准化、自动化。</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="glassmorphism rounded-2xl p-8 text-center data-card">
+                            <div class="main-text">
+                                <p class="text-6xl md:text-7xl font-black gradient-text counter-value" data-target="80">0</p>
+                                <p class="mt-4 text-lg text-slate-300">审核效率提升 <span class="font-bold text-white">%</span></p>
+                                <p class="text-sm text-slate-500 mt-2">(5分钟/条 → 1分钟/条)</p>
+                            </div>
+                            <p class="impact-text text-blue-300">相当于每天为团队节省数小时重复劳动</p>
+                        </div>
+                        <div class="glassmorphism rounded-2xl p-8 text-center data-card">
+                            <div class="main-text">
+                                <p class="text-6xl md:text-7xl font-black gradient-text counter-value" data-target="40000">0</p>
+                                <p class="mt-4 text-lg text-slate-300">已处理风险点 <span class="font-bold text-white">+</span></p>
+                                <p class="text-sm text-slate-500 mt-2">(自6月上线以来)</p>
+                            </div>
+                             <p class="impact-text text-blue-300">有效保障合规性，大幅降低拒审风险</p>
+                        </div>
+                        <div class="glassmorphism rounded-2xl p-8 text-center data-card">
+                            <div class="main-text">
+                                <p class="text-6xl md:text-7xl font-black gradient-text">多源</p>
+                                <p class="mt-4 text-lg text-slate-300">整合拒审知识库</p>
+                                <p class="text-sm text-slate-500 mt-2">(覆盖多平台与广告法)</p>
+                            </div>
+                            <p class="impact-text text-blue-300">智能比对并高亮标注违禁词</p>
+                        </div>
                     </div>
-                    <p class="text-slate-400">提高素材产出品质与内容质量,提升用户专业浓度和转化效率。深挖“产品-场景”价值,将功能介绍转化为场景化价值展示。</p>
                 </div>
-                <div class="reveal" style="transition-delay: 400ms;">
-                    <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.737 10.5l-.247 1.125a4.5 4.5 0 001.125 4.75l.247.247a4.5 4.5 0 004.75 1.125l1.125-.247m-1.125-4.75l.247-1.125a4.5 4.5 0 00-1.125-4.75l-.247-.247a4.5 4.5 0 00-4.75-1.125l-1.125.247m1.125 4.75l-.247 1.125"></path></svg>
-                        <h4 class="text-2xl font-bold">海外素材支持</h4>
+                <div class="mt-20 reveal">
+                     <h3 class="text-3xl font-bold subtitle-underline mb-6">重构用户Query标签体系</h3>
+                     <p class="text-lg text-slate-400 max-w-3xl mb-8">为了更精准地洞察用户需求，我建立了“用户需求-领域-二级领域”的多维标签体系，为创意和投放提供科学依据。</p>
+                     <div id="tag-visualization-container" class="space-y-8">
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-4">一级标签：用户需求 (12)</h4>
+                            <div id="demand-cards" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-4">二级与三级标签：领域与子领域 (19 / 80)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-[400px] md:h-[500px] glassmorphism p-4 rounded-lg">
+                                <div id="domain-list" class="overflow-y-auto pr-2 md:col-span-1">
+                                    </div>
+                                <div id="subdomain-list" class="overflow-y-auto border-t md:border-t-0 md:border-l border-slate-700 pt-4 md:pt-0 pl-4 md:col-span-2">
+                                     <div class="flex items-center justify-center h-full text-slate-500">
+                                        <p>← 在左侧选择一个领域</p>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-slate-400">利用新版标签体系梳理用户行为与需求,结合海外调研内容,为不同市场和文化环境提供更丰富的脚本创意支持。</p>
+                </div>
+                <div class="mt-20 reveal" id="script-optimization-section">
+                    <div class="collapsible-container mb-16">
+                        <div class="collapsible-header glassmorphism rounded-lg p-6 flex justify-between items-center cursor-pointer">
+                            <h3 class="text-xl md:text-2xl font-bold text-white">脚本自动化 2.0 </h3>
+                            <svg class="w-6 h-6 transform transition-transform text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                        <div class="collapsible-content">
+                            <div class="mermaid-container mt-2 p-4 md:p-8 glassmorphism rounded-lg">
+                                <pre class="mermaid">
+                                graph TD;
+                                    A["制作素材"] --> B("用户体验优化");
+                                    B --> C{{"提高专业度、信任度<br/>降低营销感"}};
+                                    C --> D("核心难点");
+                                    D --> E["1、内容要求更高<br/>更关注同行有书、技术参数等"];
+                                    D --> F["2、制作门槛高<br/>缺乏对真实痛点、专业术语的理解"];
+                                    D --> G["3、制作效率低、质量不稳定<br/>大多依赖个人和临时调研"];
+                                    subgraph 难点攻克
+                                        E --> H("搭建素材库");
+                                        F --> H;
+                                        G --> H;
+                                    end
+                                    subgraph 素材库构成
+                                        direction LR
+                                        H --- I["参考来源: 头部达人/社媒内容"];
+                                        H --- J["实际痛点与使用场景"];
+                                        H --- K["专业话术整理"];
+                                        H --- L["专业领域附件: 代码文件/学习资料/公司财报/数据等"];
+                                    end
+                                    H -- "风格式范本+内容输入" --> M["AI脚本"];
+                                    H -- "内容框架、拍摄风格、职业形象" --> N["供应商"];
+                                    M --> O{{"专业内容素材"}};
+                                    N --> O;
+                                    style E fill:#4A3A0A,stroke:#FFD700,stroke-width:1px,color:#FFD700
+                                    style F fill:#4A3A0A,stroke:#FFD700,stroke-width:1px,color:#FFD700
+                                    style G fill:#4A3A0A,stroke:#FFD700,stroke-width:1px,color:#FFD700
+                                    style H fill:#1E40AF,stroke:#60A5FA,stroke-width:2px,color:#EFF6FF
+                                    style O fill:#166534,stroke:#4ADE80,stroke-width:2px,color:#EFF6FF
+                                    style I fill:transparent,stroke:transparent,color:#9ca3af
+                                    style J fill:transparent,stroke:transparent,color:#9ca3af
+                                    style K fill:transparent,stroke:transparent,color:#9ca3af
+                                    style L fill:transparent,stroke:transparent,color:#9ca3af
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="mt-16">
+                        <h4 class="text-2xl font-bold text-white mb-6">a. 效果广告AI脚本优化</h4>
+                        <div class="script-optimization-table-container glassmorphism rounded-lg mt-8">
+                            <table class="script-optimization-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%;">优化维度</th>
+                                        <th style="width: 42.5%;">内容植入前</th>
+                                        <th style="width: 42.5%;">优化后</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>角色人设</td>
+                                        <td><p><b>刻意塑造人设：</b>我是一个10年的资深程序员, 用Kimi帮我直接解决了......</p><p class="text-slate-500 italic mt-2">(用户OS: 你自己说是，你就是吗?)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：资历金光闪闪，结果混到来信息流里喊我扫码？)</p></td>
+                                        <td>
+                                            <p><b>用话术 & 使用场景来引出角色：</b></p>
+                                            <ul class="custom-list">
+                                                <li>上周，我给Linux服务器上搭一个新的Web服务，结果被一个经典的502 Bad Gateway报错，困扰了整整三个小时</li>
+                                                <li>还在为了实现一个功能，在Stack Overflow上找那些早已过时的代码片段吗?</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>产品定位</td>
+                                        <td><p><b>夸大功能：</b>无所不能的超级神器、国产之光</p><p class="text-slate-500 italic mt-2">(用户OS: 说的天花乱坠，每天都在“变天了”，已经听腻了)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：只要带“国产之光”四个大字，我就默认先打三折——毕竟上一束光刚闪瞎我钱包，现在还在分期还款。)</p></td>
+                                        <td><p><b>辅助提效：</b>你的工作搭子，能够帮你.... <b>关注使用价值</b></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td>使用方式</td>
+                                        <td><p><b>简单使用：</b>Kimi，帮我Debug / Kimi,帮我写个抢票软件</p><p class="text-slate-500 italic mt-2">(用户OS：我不想看变魔术，想看如何一步步解决真实问题)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：抢票更离谱，它给我生成12306官网链接，附赠一句“祝您抢票顺利”。谢谢，我自己会百度。)</p></td>
+                                        <td>
+                                            <p><b>符合职业习惯：</b></p>
+                                            <ul class="custom-list">
+                                                <li>帮我分析这段代码并给到关键点注释</li>
+                                                <li>基于这份配置文件和错误日志，告诉我报错原因是什么，并给出修正后的代码</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>奇妙视角</td>
+                                        <td><p><b>强调大家都在用：</b>人人都在用的Kimi/ 清华学霸都在用的Kimi/大学生学习神器/</p><p class="text-slate-500 italic mt-2">(用户OS：话术已免疫，自卖自夸，不如多讲讲产品本身)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：人人年薪百万、人人都在用、人人焦虑得睡不着，结果一查“人人”原来就那俩营销号。)</p></td>
+                                        <td>
+                                            <p><b>用权威的榜单，行业技术大牛来背书：</b></p>
+                                            <p class="text-slate-400">体现各个行业bench排行榜，海外用户的case</p>
+                                            <div class="table-image-gallery">
+                                                <img src="table-image-1.png" alt="图表1" class="table-image">
+                                                <img src="table-image-2.png" alt="图表2" class="table-image">
+                                                <img src="table-image-3.png" alt="图表3" class="table-image">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                                    <tr>
+                                        <td>行动号召</td>
+                                        <td><p><b>紧急直接：</b>你秒变行业专家，快点击下方链接，免费体验!</p><p class="text-slate-500 italic mt-2">(用户OS：点一下就变专家，专家也太不值钱了)</p><p class="text-slate-500 italic mt-2">(Kimi吐槽：听着比“三天速成诺贝尔奖”还离谱，把“专家”这俩字儿从手术台直接拖进菜市场，一刀切成白菜价。)</p></td>
+                                        <td>
+                                            <p><b>类博主互动：</b>看看大家怎么说、这些只是我探索的一部分，有更多好的使用方法可以评论告诉我</p>
+                                            <p class="mt-2"><b>价值观认同：</b>它开始把老师从那些最耗费心神的案头工作中释放出来，去真正地、用心地、面对面地，回应每一个孩子发出的信号。</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                     <div class="mt-16">
+                        <h4 class="text-2xl font-bold text-white mb-6">b.脚本去营销化</h4>
+                        <div class="mb-12">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div class="reveal glassmorphism rounded-2xl p-8">
+                                    <h3 class="text-xl font-bold text-white mb-4">痛点</h3>
+                                    <p class="text-slate-400">专业演员营销感重，内容原生感不足；素人博主缺乏文案功底，合作周期长达1-2个月。</p>
+                                </div>
+                                <div class="reveal glassmorphism rounded-2xl p-8" style="transition-delay: 200ms;">
+                                    <h3 class="text-xl font-bold text-white mb-4">解决方案</h3>
+                                    <p class="text-slate-400">筛选合适的素人博主，并为其提供由AI生成的定制化脚本，将合作周期压缩到1-2周。</p>
+                                </div>
+                                <div class="reveal glassmorphism rounded-2xl p-8" style="transition-delay: 400ms;">
+                                    <h3 class="text-xl font-bold text-white mb-4">核心方法</h3>
+                                    <p class="text-slate-400">不依赖固定模版，关注达人风格化的叙事框架、语言风格等，生成动态创作原则并输出脚本。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="flip-card-container">
+                                <div class="flip-card">
+                                    <div class="flip-card-front glassmorphism rounded-lg p-6 flex flex-col justify-center items-center text-center">
+                                        <h3 class="text-xl font-bold text-white">专业博主+结构化教学</h3>
+                                        <p class="text-slate-400 mt-4">点击查看详情</p>
+                                    </div>
+                                    <div class="flip-card-back glassmorphism rounded-lg px-12 py-12 text-sm text-slate-300 space-y-3">
+                                        <button class="close-button">&times;</button>
+                                        <div class="card-content-wrapper">
+                                            <p>当代码策的崩溃，我懂。所以我整合了一期详细的Kimi使用指南，就是为了让每个人，<strong class="text-blue-300">从“手动挡”一键切换到“自动挡”。</strong></p>
+                                            <p><strong class="text-blue-300">第一部分：Kimi当助理，解决80%的繁杂分析。</strong></p>
+                                            <p>第一，市场爆点分析。像这样直接输入公式：【2025年 女性护肤品 传播爆点】。过去要花几天搜集的资料，Kimi三分钟就能完成。厉害的是，它不只给出爆点，还会<strong class="text-blue-300">深入分析背后的社会心理和文化动因，等于直接给了一份洞察报告。</strong></p>
+                                            <p>第二，营销方案起草。用这个公式：【用‘黄金公式’拆解XX品牌 输出策划方案】。Kimi能快速生成一份逻辑全面的方案初稿。不止于此，它还是你的“策略风险扫描仪”。你把自己的方案喂给它，它能用同样的框架，以表格形式清晰指出方案的逻辑漏洞和优化建议。</p>
+                                            <p>解决了繁杂工作，我们再谈如何成为高阶玩家。</p>
+                                            <p><strong class="text-blue-300">第二部分：吸收Kimi的策略智慧，成为超强个体。</strong></p>
+                                            <p>首先，<strong class="text-blue-300">构建你的专属分析模型。</strong> 通过和Kimi的多轮对话追问，<strong class="text-blue-300">引导它一步步解构复杂的商业题，</strong> 最终生成一个包含市场机会、用户画像、产品定位等维度的、你专属的分析模型。</p>
+                                            <p>其次，快速学习一个新赛道。把几十份行业研报、财报一次性投给Kimi，让它【生成行业商业模式图谱并分析核心竞争要素】。<strong class="text-blue-300">几周的学习周期，现在一天就能搞定。</strong></p>
+                                            <p>掌握这些技巧，你就能在AI时代，<strong class="text-blue-300">从繁杂的细节中解放出来，变身“超强策略个体”。</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flip-card-container">
+                                <div class="flip-card">
+                                    <div class="flip-card-front glassmorphism rounded-lg p-6 flex flex-col justify-center items-center text-center">
+                                        <h3 class="text-xl font-bold text-white">小红书博主+反思成长故事</h3>
+                                        <p class="text-slate-400 mt-4">点击查看详情</p>
+                                    </div>
+                                    <div class="flip-card-back glassmorphism rounded-lg px-12 py-12 text-sm text-slate-300 space-y-3">
+                                        <button class="close-button">&times;</button>
+                                        <div class="card-content-wrapper">
+                                            <p>刚入行时，我在一家大广告公司做策略助理。说白了，就是把几十页的报告，搬运到PPT里。开会可以不发言，但老板要的50页PPT，你今晚必须做完。</p>
+                                            <p>我当时并不是在靠策略能力赚钱，<strong class="text-blue-300">我是在靠我的耐心和视力。</strong></p>
+                                            <p>直到有一次为了比稿，我整合十几份报告到凌晨三点，满脑子都是复制粘贴，我突然就崩溃了。我瘫在椅子上问自己：<strong class="text-blue-300">我读了那么多书，做了那么多案例，我为什么要靠“策略体力活”来赚钱？</strong></p>
+                                            <p>那一刻我才意识到，<strong class="text-blue-300">我真正的价值，是我的思考，而不是我的“擅长熬夜”。</strong></p>
+                                            <p>后来，我发现了一种全新的工作方式。</p>
+                                            <p>比如，分析“2025年女性护肤品爆点”这种事，不再需要我花几天去搜集资料。我直接把问题扔给Kimi，它几分钟就能给我一份洞察报告，还分析了背后的社会心理。</p>
+                                            <p>再比如，用【黄金公式】做方案，我不再需要自己去填充里面的每一个格子。我让Kimi帮我拆解，我只负责在它的答案之上，进行更高维度的决策。</p>
+                                            <p><strong class="text-blue-300">我的工作重心，彻底从“寻找答案”，转移到了“提出一个好问题”上。</strong></p>
+                                            <p>所以，希望所有同行都能认识到，无休止地堆砌资料、通宵做PPT，这些都不是你的分内工作。<strong class="text-blue-300">你的优秀，不代表你应该被物化成一个信息处理器。</strong></p>
+                                            <p><strong class="text-blue-300">你的才华，是用来创造和判断的，不是用来消耗在复制粘贴里的。</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer class="text-center py-10 px-4">
-        <p class="text-slate-400">感谢您的观看</p>
-    </footer>
-
-    <div id="modal-overlay" class="hidden"></div>
-
+        </section>
+        <section id="case-development-section" class="py-20 mt-32">
+            <div class="max-w-6xl mx-auto px-4 md:px-10 reveal">
+                <h3 class="text-sm uppercase text-blue-400 font-bold">Level 2: 增长素材创意产出</h3>
+                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 title-underline">高质量案例开发</h2>
+                <p class="text-lg text-slate-400 max-w-3xl">
+                    素材落地<span class="gradient-text font-bold text-2xl md:text-3xl">100+</span>，
+                    贡献了<span class="gradient-text font-bold text-2xl md:text-3xl">70%</span>的代码方向素材，
+                    总消耗超<span class="gradient-text font-bold text-2xl md:text-3xl">120万</span>。
+                </p>
+            </div>
+            <div class="mt-12 horizontal-scroll-container">
+                 <div class="horizontal-scroll py-4 pl-4 md:pl-10 lg:pl-20 xl:pl-32">
+                    <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                         style="background-image: url('1-地球.png'); background-size: cover; background-position: center;">
+                        <a href="https://tos.mobgi.com/tos_beijing/material_2/20250527/12400082056/12400082056/09072ae82e5152b8c9073ba0de3ec2c8.mp4" target="_blank" class="block w-full h-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                            <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                                <div>
+                                    <p class="text-sm text-blue-400">AI动画</p>
+                                    <h4 class="case-card-title text-2xl font-bold mt-2 text-white">教育 x 代码</h4>
+                                    <p class="text-slate-200 mt-2">案例展示：将地球模型制作与备课场景结合，直击教师痛点。</p>
+                                </div>
+                                <div class="mt-6 border-t border-slate-700 pt-4">
+                                    <p class="text-3xl font-bold gradient-text">45w+</p>
+                                    <p class="text-slate-300">总消耗</p>
+                                    <p class="text-sm text-slate-400">连续四周投放Top3</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                         style="background-image: url('2-侠客.png'); background-size: cover; background-position: center; transition-delay: 150ms;">
+                        <a href="https://tos.mobgi.com/tos_beijing/material_2/20250523/12400082056/12400082056/daf00cc9a65dac1f14557f625b6069ee.mp4" target="_blank" class="block w-full h-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                            <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                                <div>
+                                    <p class="text-sm text-blue-400">AI动画</p>
+                                    <h4 class="case-card-title text-2xl font-bold mt-2 text-white">游戏 x 代码</h4>
+                                    <p class="text-slate-200 mt-2">案例展示：肉鸽游戏“k侠”，结合热点游戏元素，升级游戏素材表现力。</p>
+                                </div>
+                                <div class="mt-6 border-t border-slate-700 pt-4">
+                                    <p class="text-3xl font-bold gradient-text">20w+</p>
+                                    <p class="text-slate-300">总消耗</p>
+                                    <p class="text-sm text-slate-400">创新游戏素材包装</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                         style="background-image: url('3-代码.png'); background-size: cover; background-position: center; transition-delay: 300ms;">
+                        <a href="https://tos.mobgi.com/tos_beijing/material_2/20250723/12400082056/12400096371/aa4f59f6c0348eb8dd8f2c4312f3b160.mp4" target="_blank" class="block w-full h-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                            <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                                <div>
+                                    <p class="text-sm text-blue-400">包装剪辑/信息流</p>
+                                    <h4 class="case-card-title text-2xl font-bold mt-2 text-white">专业知识科普</h4>
+                                    <p class="text-slate-200 mt-2">案例展示：兼具专业性与视觉表现力，提升专业用户转化。</p>
+                                </div>
+                                <div class="mt-6 border-t border-slate-700 pt-4">
+                                    <p class="text-3xl font-bold gradient-text">10w+</p>
+                                    <p class="text-slate-300">总消耗</p>
+                                    <p class="text-sm text-slate-400">素材专业化</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                         style="background-image: url('4-专业包剪.png'); background-size: cover; background-position: center; transition-delay: 450ms;">
+                        <a href="https://tos.mobgi.com/tos_beijing/material_5/20250801/12400082056/12400096389/599b9128002193aa0c9c31695d1c7f2e.mp4?uid=12400107651" target="_blank" class="block w-full h-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                            <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                                <div>
+                                    <p class="text-sm text-blue-400">k2素材上新</p>
+                                    <h4 class="case-card-title text-2xl font-bold mt-2 text-white">质量包剪</h4>
+                                    <p class="text-slate-200 mt-2">案例展示：参考海外宣传，提升包装剪辑品质，去营销化</p>
+                                </div>
+                                <div class="mt-6 border-t border-slate-700 pt-4">
+                                    <p class="text-3xl font-bold gradient-text">Top3</p>
+                                    <p class="text-slate-300">首周投放数据反馈</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="case-card flex-shrink-0 w-80 md:w-96 mr-8 rounded-2xl overflow-hidden reveal relative" 
+                         style="background-image: url('5-小红书.png'); background-size: cover; background-position: center; transition-delay: 600ms;">
+                        <a href="https://www.xiaohongshu.com/user/profile/647fe749000000001001d19b?xsec_token=AB4Lgal3VFuVStkMxwMQVrlRWIqCKHUl2WuP4h95x-IzI=&xsec_source=pc_note" target="_blank" class="block w-full h-full">
+                            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                            <div class="p-6 relative flex flex-col h-full min-h-[400px] justify-between">
+                                <div>
+                                    <p class="text-sm text-blue-400">社媒运营</p>
+                                    <h4 class="case-card-title text-2xl font-bold mt-2 text-white">小红书内容制作</h4>
+                                    <p class="text-slate-200 mt-2">负责图文内容制作与发布，探索原生内容流量。</p>
+                                </div>
+                                <div class="mt-6 border-t border-slate-700 pt-4">
+                                    <p class="text-3xl font-bold gradient-text">2700+</p>
+                                    <p class="text-slate-300">总获赞与收藏</p>
+                                    <p class="text-sm text-slate-400">从0到1的账号尝试</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                 </div>
+            </div>
+        </section>
+        <section id="future-outlook-section" class="min-h-screen py-20 px-4 md:px-10 flex items-center">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="reveal">
+                    <h3 class="text-sm uppercase text-blue-400 font-bold">Final Level: 未来展望</h3>
+                    <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">持续进化，创造价值</h2>
+                    <p class="text-lg text-slate-400 max-w-3xl">基于本次实习的积累，我将继续在以下三个方向深耕，为团队创造更大价值。</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="reveal">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                            <h4 class="text-2xl font-bold">探索AI自动化赋能</h4>
+                        </div>
+                        <p class="text-slate-400">识别业务当前工作流中能被AI大模型替代的人工环节,协助团队开发和优化自动化工具,提高整体工作效率。</p>
+                    </div>
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <h4 class="text-2xl font-bold">专业品质素材产出</h4>
+                        </div>
+                        <p class="text-slate-400">提高素材产出品质与内容质量,提升用户专业浓度和转化效率。深挖“产品-场景”价值,将功能介绍转化为场景化价值展示。</p>
+                    </div>
+                    <div class="reveal" style="transition-delay: 400ms;">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.737 10.5l-.247 1.125a4.5 4.5 0 001.125 4.75l.247.247a4.5 4.5 0 004.75 1.125l1.125-.247m-1.125-4.75l.247-1.125a4.5 4.5 0 00-1.125-4.75l-.247-.247a4.5 4.5 0 00-4.75-1.125l-1.125.247m1.125 4.75l-.247 1.125"></path></svg>
+                            <h4 class="text-2xl font-bold">海外素材支持</h4>
+                        </div>
+                        <p class="text-slate-400">利用新版标签体系梳理用户行为与需求,结合海外调研内容,为不同市场和文化环境提供更丰富的脚本创意支持。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="text-center py-10 px-4">
+            <p class="text-slate-400">感谢您的观看</p>
+        </footer>
+        <div id="modal-overlay" class="hidden"></div>
+    </main>
+    
     <script src="script.js"></script>
 </body>
 </html>
