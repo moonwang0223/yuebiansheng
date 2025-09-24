@@ -62,7 +62,7 @@ body {
     background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('起始页.png');
 }
 #profile-page {
-    background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('个人定位.png');
+    background-image: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.6)), url('个人定位.png');
 }
 #level-select-page {
     background-image: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.4)), url('关卡选择.png');
@@ -631,4 +631,8 @@ body {
 .case-card {
     background-size: cover;
     background-position: center;
+}
+/* 新增：专门用于调整“玩家档案”页卡片内描述文字的颜色 */
+#profile-page .glassmorphism .text-slate-400 {
+    color: #cbd5e1; /* Tailwind CSS 的 slate-300, 一个更亮的灰色 */
 }
