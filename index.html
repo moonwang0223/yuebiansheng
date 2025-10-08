@@ -22,7 +22,7 @@
         <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
         <div class="absolute bottom-0 right-0 w-64 h-64 bg-teal-500 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
         
-        <div class="z-10 text-center">
+        <div class="z-10 text-center relative">
             <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4 intro-reveal">Kimi增长创意实习 Review</h1>
             <p class="text-2xl md:text-3xl text-slate-300 mb-12 intro-reveal" style="animation-delay: 200ms;">一条打怪升级的创意探索之路</p>
             <button id="start-btn" class="cta-button-glass intro-reveal" style="animation-delay: 400ms;">
@@ -32,7 +32,7 @@
     </div>
 
     <div id="profile-page" class="intro-page hidden">
-        <div class="max-w-6xl mx-auto w-full px-4 md:px-10">
+        <div class="max-w-6xl mx-auto w-full px-4 md:px-10 relative z-10">
             <div class="intro-reveal text-center">
                 <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4">玩家档案</h2>
                 <p class="text-2xl md:text-3xl gradient-text font-bold mt-8">技术热情与创意工作相结合</p>
@@ -51,7 +51,7 @@
                     <p class="text-slate-400">为了提升投放素材的整体质量与用户观感，通过优化脚本话术、把控视觉品质，来对内容品质与专业度进行优化，优化ai脚本，搭建创意专项知识库。</p>
                 </div>
             </div>
-            <div class="text-center mt-16 intro-reveal" style="animation-delay: 400ms;">
+            <div class="text-center mt-12 intro-reveal" style="animation-delay: 400ms;">
                  <button id="profile-next-btn" class="cta-button-glass mt-8">
                     查看我的任务
                 </button>
@@ -60,7 +60,7 @@
     </div>
 
     <div id="level-select-page" class="intro-page hidden">
-        <div class="max-w-6xl mx-auto w-full px-4 md:px-10 text-center">
+        <div class="max-w-6xl mx-auto w-full px-4 md:px-10 text-center relative z-10">
             <div class="intro-reveal mb-12">
                 <h2 class="text-3xl md:text-5xl font-black">关卡选择</h2>
                 <p class="text-xl text-slate-400 mt-4">请选择要查看的篇章</p>
@@ -209,7 +209,7 @@
             <div class="max-w-6xl mx-auto w-full">
                 <div class="reveal">
                     <h3 class="text-sm uppercase text-blue-400 font-bold">Level 1: AI自动化赋能</h3>
-                    <h2 class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline">AI赋能，效率革新</h2>
+                    <h2 id="main-concept-title" class="text-4xl md:text-6xl font-black mt-2 mb-8 title-underline cursor-pointer">AI赋能，效率革新</h2>
                 </div>
                 <div class="mt-12 reveal">
                     <h3 class="text-3xl font-bold subtitle-underline mb-6">AI自动审核</h3>
@@ -587,7 +587,21 @@
         </footer>
         <div id="modal-overlay" class="hidden"></div>
     </main>
-    
+    <div id="concept-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+        <div class="glassmorphism rounded-lg p-8 max-w-4xl w-full relative">
+            <button id="close-concept-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl">&times;</button>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-bold gradient-text mb-4">拒审情况</h3>
+                    <img src="拒审情况.png" alt="拒审情况" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-bold gradient-text mb-4">机审结果</h3>
+                    <img src="机审结果.png" alt="机审结果" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
