@@ -636,3 +636,25 @@ body {
 #profile-page .glassmorphism .text-slate-400 {
     color: #cbd5e1; /* Tailwind CSS 的 slate-300, 一个更亮的灰色 */
 }
+/* 概念模态框样式 */
+#concept-modal {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+#concept-modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+#concept-modal .glassmorphism {
+    background: rgba(15, 23, 42, 0.9); /* 更深的不透明度 */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(66, 153, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-20px); /* 初始位置略高 */
+    transition: transform 0.3s ease-out;
+}
+#concept-modal.visible .glassmorphism {
+    transform: translateY(0); /* 弹出到位 */
+}
