@@ -13,10 +13,38 @@ mermaid.initialize({
       clusterBkg: 'transparent',
       clusterBorder: 'transparent',
     }
-});
+  });
   
 // 脚本在HTML文档加载和解析完成后立即执行
 document.addEventListener('DOMContentLoaded', () => {
+
+    // 概念模态框逻辑
+    const mainConceptTitle = document.getElementById('main-concept-title');
+    const conceptModal = document.getElementById('concept-modal');
+    const closeConceptModalBtn = document.getElementById('close-concept-modal');
+
+    if (mainConceptTitle && conceptModal && closeConceptModalBtn) {
+        mainConceptTitle.addEventListener('click', () => {
+            conceptModal.classList.add('visible');
+            conceptModal.classList.remove('hidden'); 
+        });
+
+        const closeModal = () => {
+            conceptModal.classList.remove('visible');
+            setTimeout(() => {
+                conceptModal.classList.add('hidden'); 
+            }, 300); // 与CSS的transition时间匹配
+        };
+
+        closeConceptModalBtn.addEventListener('click', closeModal);
+
+        // 点击模态框背景关闭
+        conceptModal.addEventListener('click', (e) => {
+            if (e.target === conceptModal) {
+                closeModal();
+            }
+        });
+    }
     
     // ==================================================== //
     //            游戏化引导页/多页面导航逻辑               //
